@@ -1,1 +1,55 @@
+>>>>>>>Cycle Bot Day 1<<<<<<<<<
 
+We had a personal meeting with my teammates on discord to know each other better and to make a plan for working the project.
+It was discussed that Chinmay will handle V-rep simulations whereas Shreya and Jai will read more research papers about the project and try to derive mathematical equations for the model. Jai will also help Chinmay in making the 3d models on fusion 360. 
+
+New Things learned:
+We read a number of papers on reaction wheel and cycle bot
+We got familiar with V-rep Software
+
+Resources:
+https://www.matec-conferences.org/articles/matecconf/pdf/2018/11/matecconf_eureca2018_02009.pdf
+https://sci-hub.tw/https://www.morganclaypool.com/doi/abs/10.2200/S00085ED1V01Y200702CRM001
+https://sci-hub.tw/https://ieeexplore.ieee.org/abstract/document/6130176
+https://www.youtube.com/watch?v=Ufcv_WLuKo4
+https://www.youtube.com/watch?v=WB0zCufrHOM&list=PLK0jpMYIBd6DWhiLP5Gzp4jN1MM0vx9ek&t=0s
+https://www.youtube.com/watch?v=4kfBEaTncjI&start=1235s
+
+
+>>>>>>>Cycle Bot Day 2<<<<<<<<<
+
+-> 3D Model of reaction wheel inverted pendulum in Fusion 360.
+-> Report on finding the moment of inertia of a body in Fusion 360.
+-> Read Papers to understand Mathematical Modeling the system.
+
+
+>>>>>>>Cycle Bot Day 3<<<<<<<<<
+
+● Watch tutorials and Videos to learn more about Lua scripting in
+V-rep.
+● Calculated Moment of inertia of the Reaction wheel and pendulum
+using Fusion 360.
+● Wrote Code in V-rep to control the reaction Wheel torque in the
+Simulation
+● Helped write code to control the Bot in V-rep
+
+
+>>>>>>>Cycle Bot Day 4<<<<<<<<<
+
+-> Modified Algorithm code to achieve stable simulation in V-rep
+-> Helped in tuning Q and R Matrix of the control system
+
+
+
+>>>>>>>Cycle Bot Day 5<<<<<<<<<
+
+
+-> Finalized the 3d model of cycle bot on fusion 360.
+-> Helped in stabilizing the simulation of the bot in V-rep.
+
+
+>>>>>>>Cycle Bot Day 6<<<<<<<<<
+
+
+-> Watched tutorials about path planning in V-rep.
+-> Helped Team 2(PID), to complete their task.
