@@ -1,4 +1,4 @@
->>>> 09/05/2020 Day 1
+>>>>>> 09/05/2020 Day 1
 
 We had a team meeting, wherein we learned a little more about each other and discussed the following things.
 1. We discussed the layout of our project and how we are going to work in the upcoming weeks.
@@ -21,7 +21,8 @@ https://dml.cz/bitstream/handle/10338.dmlcz/144208/Kybernetika_51-2015-1_12.pdf
 https://www.youtube.com/watch?v=EXnqTtZ5pW0
 
 
->>>> 11/05/2020 Day 2
+
+>>>>>> 11/05/2020 Day 2
 
 Task:
 
@@ -43,7 +44,8 @@ https://www.coppeliarobotics.com/helpFiles/en/remoteApiClientSide.htm
 https://youtu.be/ari2kYsBz2o
 
 
->>>> 12/05/2020 Day 3
+
+>>>>>> 12/05/2020 Day 3
 
 Task:
 
@@ -55,8 +57,8 @@ Task:
   (https://www.youtube.com/watch?v=cOk5DuJj-3M&t=301s)
 
 
->>>> 13/05/2020 Day 4
 
+>>>>>> 13/05/2020 Day 4
 
 - Worked on the tuning of K matrix for balancing the Reaction wheel balanced inverted pendulum.
 - Coordinated with the team, understood changes in the Lua script, and subsequent tuning and improvisation of algorithm. 
@@ -64,3 +66,37 @@ Task:
   (https://photos.google.com/share/AF1QipOili_nivEFEQYdZMA4QY8zwvBRdZh_km8YurLIkzaD5o07cU1Ebc0Asdr_RD4kSw?key=T2stdTNjR0F4Ny1XZkN3a2o4elFnblQ5XzZ0RDJB)
 - Lua Script used on V-Rep
   (https://drive.google.com/file/d/1Uk1yDb5egUYr-aBYIeEfMhRLJTD5KuHN/view)
+
+
+
+>>>>>> 14/05/2020 Day 5
+
+- Made the document containing the Mathematical Modelling of Reaction wheel inverted pendulum on overleaf.
+- The team had a discussion and we finalised the design of Cyclebot.
+- Read and researched about the position of the reaction wheel on our bot.
+- Saw videos and articles explaining the concept of angular momentum, torque, angular acceleration and center of gravity.
+
+
+
+>>>>>> 15/05/2020 Day 6
+
+- Had a meeting with our mentors where we showed them the system on a pivot simulation and the final design of the bot.
+- Simulation of Reaction wheel balanced inverted pendulum connected via a pivot to the ground was done using V-Rep.
+- The code for the same was created in Lua script on V-Rep.
+- Saw videos about path planning in V-Rep for use in Cyclebot simulation.
+
+
+
+>>>>>> 16/05/2020 Day 7
+
+- Researched about possible ideas for next week’s work.
+- Saw videos and read about the importance of control systems.
+- Saw videos about the use and benefit of control systems.
+- Thought about the experiments for 2nd week's tasks.
+
+
+>>>> 18/05/2020 Day 8
+- Had a meeting with our mentors where we presented the simulation of our Cyclebot.
+- The task for the day included making a motivational and informative video about control systems.
+- Made a document containing the entire layout and structure of the video.
+- Started with making my part of the video.
