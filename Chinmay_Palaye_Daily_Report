@@ -1,30 +1,57 @@
 9th May 2020:
-	Learnt basics of VREP software- basic shapes, properties of objects (respondable, dynamic/static, etc.), joints and how to apply constraints between 2 objects. Read a little bit about Lua scripts.
+	Learnt basics of VREP software- basic shapes, properties of objects (respondable, dynamic/static, etc.), joints and how to apply
+constraints between 2 objects.
+	Read a little bit about Lua scripts.
 
 10th May 2020:
-	Read about VREP scripting, wrote a test script to control position of motor by controlling velocity of the joint. Also saw how to build robots by using 3D models made in CAD softwares (e.g. Fusion360).
+	Read about VREP scripting, wrote a test script to control position of motor by controlling velocity of the joint.
+	Saw how to build robots by using 3D models made in CAD softwares (e.g. Fusion360).
 	
 11th May 2020:
-	Read papers on reaction wheel based cycle robots. Read some theory about conservation of angular momentum. Started with the model of simple reaction wheeled inverted pendulum modelling in VREP
+	Read papers on reaction wheel based cycle robots.
+	Read some theory about conservation of angular momentum.
+	Started with the model of simple reaction wheeled inverted pendulum modelling in VREP
 
 12th May 2020:
-	Finished modelling of simple robot in VREP. Wrote script to control the position. Tried different Q matrices to adjust the gains.
+	Finished modelling of simple robot in VREP.
+	Wrote script to control the position.
+	Tried different Q matrices to adjust the gains.
 	
 13th May 2020:
-	Worked on the code algorithm to balance the robot. Tried to come up with different problem statements which may help understand the behaviour of our system. Simulated those scenarios in VREP to know the correct behaviour.
+	Worked on the code algorithm to balance the robot.
+	Tried to come up with different problem statements which may help understand the behaviour of our system.
+	Simulated those scenarios in VREP to know the correct behaviour.
 	
 14th May 2020:
-	Derived the state equations for robot, and did other calculations to determine the height of robot. Conclusion was- overall CG of robot should be high, placement of wheel wrt CG does not affect performance of robot.
+	Derived the state equations for robot, and did other calculations to determine the height of robot.
+	Conclusion was- overall CG of robot should be high, placement of wheel wrt CG does not affect performance of robot.
 	Made VREP model of a robot with prism shaped base, wrote a script to balance that.
 	
 15th May 2020:
-	Tried to figure out problems in Team B simulation file, had a talk with them. Modelled cycle bot in VREP, but it was having some issues related to revolute joint.
+	Tried to figure out problems in Team B simulation file, had a talk with them.
+	Modelled cycle bot in VREP, but it was having some issues related to revolute joint.
 	
 16th May 2020:
-	Tried 2-3 different designs to solve the above problem. Finalised the one working best. Read and watched videos abput path creation in VREP. Tested the design by writing a test script to make the robot follow sine curve.
+	Tried 2-3 different designs to solve the above problem. Finalised the one working best.
+	Read and watched videos abput path creation in VREP.
+	Tested the robot design by writing a test script to make the robot follow sine curve.
 
 17th May 2020:
-	Wrote a script to balance the robot in steady conditions using reaction wheel. Wrote a script to make the robot follow a path, tested successfully. Thought about the experiments to explain given topics.
+	Wrote a script to balance the robot in steady conditions using reaction wheel.
+	Wrote a script to make the robot follow a path, tested successfully.
+	Thought about the experiments to explain given topics.
+	
+18th May 2020:
+	Watched some YouTube videos for experiment ideas
+	Wrote a script to control the cycle bot using a GUI which has buttons like forward, backward etc.
+
+19th May 2020:
+	Contributed in ppt for video 1
+	Designed VREP simulations for video 3 and video 4
+	
+20th May 2020:
+	Merged the recorded video with project videos and simulation video
+	Wrote a reference script for video 4
 	
 	
 	
