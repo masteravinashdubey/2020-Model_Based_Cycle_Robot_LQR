@@ -10,7 +10,7 @@ constraints between 2 objects.
 11th May 2020:
 	Read papers on reaction wheel based cycle robots.
 	Read some theory about conservation of angular momentum.
-	Started with the model of simple reaction wheeled inverted pendulum modelling in VREP
+	Started with the model of simple reaction wheeled inverted pendulum modelling in VREP.
 
 12th May 2020:
 	Finished modelling of simple robot in VREP.
@@ -42,30 +42,30 @@ constraints between 2 objects.
 	Thought about the experiments to explain given topics.
 	
 18th May 2020:
-	Watched some YouTube videos for experiment ideas
+	Watched some YouTube videos for experiment ideas.
 	Wrote a script to control the cycle bot using a GUI which has buttons like forward, backward etc.
 
 19th May 2020:
-	Contributed in ppt for video 1
-	Designed VREP simulations for video 3 and video 4
+	Contributed in ppt for video 1.
+	Designed VREP simulations for video 3 and video 4.
 	
 20th May 2020:
-	Merged the recorded video with project videos and simulation video
-	Wrote a reference script for video 4
+	Merged the recorded video with project videos and simulation video.
+	Wrote a reference script for video 4.
 	
 21st May 2020:
-	Made latex ppt for the progress ppt
-	wrote structure of video 3
+	Made latex ppt for the progress ppt.
+	wrote structure of video 3.
 	
 22nd May 2020:
-	Practiced the ppt, mock presentation
-	Made necessary changes to ppt
-	Made a compiled video of simulations
+	Practiced the ppt, mock presentation.
+	Made necessary changes to ppt.
+	Made a compiled video of simulations.
 	
 23rd May 2020:
-	Attended the progress ppt session
-	Made ppts for video 3 and video 4
-	Recorded the videos, 3 and 4
+	Attended the progress ppt session.
+	Made ppts for video 3 and video 4.
+	Recorded the videos, 3 and 4.
 	
 24th May 2020:
 	Completed the document for video 3 (eigenvalues)
@@ -73,7 +73,7 @@ constraints between 2 objects.
 	College work
 	
 25th May 2020:
-	Completed the document for video 4 (stability criteria)
+	Completed the document for video 4 (stability criteria).
 	Video and audio need to be recorded separately on my machine due to some problem, then they are merged, 
 	so this merging was done on 25th.
 	
@@ -82,9 +82,15 @@ constraints between 2 objects.
 	Both documents were combined, and 2 separate documents, one for problem statement, and other for its soultion are made.
 	
 27th May 2020:
-	Completed week 2 remaining work
-	reorganized github repository, videos included
-	Read and made a draft of XBee documentation
+	Completed week 2 remaining work.
+	reorganized github repository, videos included.
+	Read and made a draft of XBee documentation.
+	
+28th May 2020:
+	Designed experiments for XBee+Serial communication and 3D Modelling in VREP.
+	Watched a few videos about XBee working and interfacing.
+	Started with the document of XBee project.
+	
 	
 	
 
