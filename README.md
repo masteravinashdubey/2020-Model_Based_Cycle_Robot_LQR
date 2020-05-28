@@ -1,6 +1,8 @@
 # Model Based Robot Designing
 
 - This project is part of e-YSIP(E-yantra Summer Internship Programme), 2020.
+- Project Mentors: Avinash Dubey, Avijit Pandey
+- Project Interns: Shreya Rastogi, Jai Garg, Chinmaya Palaye
 - The objective of this project is to understand and implement LQR based robot modelling.
 - In this Project, we'll learn to design control strategies & model various robots.
 - We will simulate different systems and robots based on the chosen model.
