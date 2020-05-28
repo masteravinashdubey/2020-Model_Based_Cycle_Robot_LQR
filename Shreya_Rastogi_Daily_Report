@@ -1,0 +1,178 @@
+>>>>>> 09/05/2020 Day 1
+
+We had a team meeting, wherein we learned a little more about each other and discussed the following things.
+1. We discussed the layout of our project and how we are going to work in the upcoming weeks.
+2. It was decided that Chinmaya will handle the V-Rep and Jai and I will go through the research
+   papers and do the mathematical modelling for the first week.
+3. Discussion was also done regarding the design of our bot and it's structure.  
+4. We then proceeded towards finding relevant research papers for our robot.
+5. We also went through several videos to get ourselves familiarised with the cyclebot.
+
+Videos watched:
+
+https://www.youtube.com/watch?v=ZPWiIBcHOh4
+https://www.youtube.com/playlist?list=PL38P7Q24q4XA7c0uNj0kO4or-bKhFYdIg
+https://www.youtube.com/watch?v=0312BNqIBFI
+https://www.youtube.com/watch?v=WB0zCufrHOM&list=PLK0jpMYIBd6DWhiLP5Gzp4jN1MM0vx9ek
+
+Research Papers:
+
+https://dml.cz/bitstream/handle/10338.dmlcz/144208/Kybernetika_51-2015-1_12.pdf
+https://www.youtube.com/watch?v=EXnqTtZ5pW0
+
+
+
+>>>>>> 11/05/2020 Day 2
+
+Task:
+
+Mathematical modelling of Cyclebot
+
+- We started with Reaction wheel balanced inverted pendulum system.
+- This system closely resembles the Cyclebot system.
+- I referred to various research papers that were relevant to the system.
+- Finally found one extremely relevant.
+  (https://dml.cz/bitstream/handle/10338.dmlcz/144208/Kybernetika_51-2015-1_12.pdf)
+- Referring to this paper I did the mathematical  modelling for Reaction wheel balanced inverted pendulum system.
+- There were 4 state space variables chosen theta, theta dot, phi and phi dot.
+- The state space representation of the system was found out complete with the A and B matrices.
+- These will be further used in finding the K matrix for LQR controller.
+- The next part of my work was related to octave. I read documentation about how to connect octave files with V-Rep. 
+
+https://www.coppeliarobotics.com/helpFiles/en/remoteApiFunctionsOctave.htm
+https://www.coppeliarobotics.com/helpFiles/en/remoteApiClientSide.htm
+https://youtu.be/ari2kYsBz2o
+
+
+
+>>>>>> 12/05/2020 Day 3
+
+Task:
+
+- The Octave code for the generation of optimal state feedback control gain matrix K was written .
+- A, the state matrix and B, the input matrix were written in the code from the derivation of the system.
+- The constants like mass of the pendulum, mass of the wheel etc. were found out using Fusion 360 software where the model was made.
+- Using the lqr() function in MATLAB the K matrix was generated.
+- I also went through a tutorial on Lua programming in V-Rep. 
+  (https://www.youtube.com/watch?v=cOk5DuJj-3M&t=301s)
+
+
+
+>>>>>> 13/05/2020 Day 4
+
+- Worked on the tuning of K matrix for balancing the Reaction wheel balanced inverted pendulum.
+- Coordinated with the team, understood changes in the Lua script, and subsequent tuning and improvisation of algorithm. 
+- Video of Simulation of stabilized Reaction wheel Inverted Pendulum on V-rep.
+  (https://photos.google.com/share/AF1QipOili_nivEFEQYdZMA4QY8zwvBRdZh_km8YurLIkzaD5o07cU1Ebc0Asdr_RD4kSw?key=T2stdTNjR0F4Ny1XZkN3a2o4elFnblQ5XzZ0RDJB)
+- Lua Script used on V-Rep
+  (https://drive.google.com/file/d/1Uk1yDb5egUYr-aBYIeEfMhRLJTD5KuHN/view)
+
+
+
+>>>>>> 14/05/2020 Day 5
+
+- Made the document containing the Mathematical Modelling of Reaction wheel inverted pendulum on overleaf.
+- The team had a discussion and we finalised the design of Cyclebot.
+- Read and researched about the position of the reaction wheel on our bot.
+- Saw videos and articles explaining the concept of angular momentum, torque, angular acceleration and center of gravity.
+
+
+
+>>>>>> 15/05/2020 Day 6
+
+- Had a meeting with our mentors where we showed them the system on a pivot simulation and the final design of the bot.
+- Simulation of Reaction wheel balanced inverted pendulum connected via a pivot to the ground was done using V-Rep.
+- The code for the same was created in Lua script on V-Rep.
+- Saw videos about path planning in V-Rep for use in Cyclebot simulation.
+
+
+
+>>>>>> 16/05/2020 Day 7
+
+- Researched about possible ideas for next week’s work.
+- Saw videos and read about the importance of control systems.
+- Saw videos about the use and benefit of control systems.
+- Thought about the experiments for 2nd week's tasks.
+
+
+
+>>>>>> 18/05/2020 Day 8
+
+- Had a meeting with our mentors where we presented the simulation of our Cyclebot.
+- The task for the day included making a motivational and informative video about control systems.
+- Made a document containing the entire layout and structure of the video.
+- Started with making my part of the video.
+
+
+
+>>>>>> 19/05/2020 Day 9
+
+- I worked on the presentation for the video.
+- Did some more research about the best way to make a motivational video.
+- Coordinated with the team in improving the layout of the presentation.
+- Wrote the content for the audio for my section of the video.
+
+
+
+>>>>>> 20/05/2020 Day 10
+
+- I continued working on the motivational video for control systems.
+- Some final changes were made in the presentation for the video and the video was compiled.
+- We had a team meeting to discuss and divide the rest of the week's work.
+- According to the division I will be working on the presentation, documentation and experiments for the topics
+  Controllability and Observability.
+- I started with my research and planning for how I am going to present these topics.
+
+
+
+>>>>>> 21/05/2020 Day 11
+
+- Had a meeting with the mentors.
+- They gave us constructive feedback regarding the motivational video.
+- We told them about our plan for the rest of the week's work.
+- Started with the document on controllability and observability.
+
+
+
+>>>>>> 22/05/2020 Day 12
+
+- Presented our presentation to our mentors.
+- I continued working on the document for the topics assigned to me.
+- Read about controllability, it's tests and thought of best ways to explain it.
+- Ran the examples of simple pendulum and cart pendulum on octave to depict controllability of the system.
+
+
+
+>>>>>> 23/05/2020 Day 13
+
+- Continued making my document on controllability and observability.
+- We had our presentation in front of Kavi sir at 11 today.
+- Attended all the other presentations in the morning session.
+
+
+
+>>>>>> 25/05/2020 Day 14
+
+- Completed my document.
+- Made the presentation for the video explanation of the above mentioned topics.
+- Attended a session by Admiral Anil Chopra on Geo-Politics.
+- Recorded the voice over for the video.
+- Completed the explanation video as well.
+
+
+
+>>>>>> 26/05/2020 Day 15
+
+- Had a meeting with the mentors in the morning.
+- Had a discussion with the team regarding the experiment to be chosen.
+- Designed a problem statement document for the experiment on controllability and observability.
+- Made a solution document for the same.
+
+
+
+>>>>>> 27/05/2020 Day 16
+
+- Had a meeting with the mentors in the morning.
+- Arranged and reorganized our project's GitHub repository.
+- Had a meeting with the team to decide and divide this week's work.
+- Completed the octave file for 2nd week's experiment.
