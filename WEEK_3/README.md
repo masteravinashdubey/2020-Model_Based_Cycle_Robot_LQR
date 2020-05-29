@@ -1,4 +1,4 @@
-# Hardware Implementation of Cycle Robot
+# Robot Hardware
 - 3 experiments to be designed.
   1. 3D Modelling in VREP
   2. Interfacing GY87 with Arduino, comparison between various filters
