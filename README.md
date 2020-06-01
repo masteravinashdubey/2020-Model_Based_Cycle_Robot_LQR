@@ -2,7 +2,7 @@
 
 - This project is part of e-YSIP(E-yantra Summer Internship Programme), 2020.
 - Project Mentors: Avinash Dubey, Avijit Pandey
-- Project Interns: Shreya Rastogi, Jai Garg, Chinmaya Palaye
+- Project Interns: Shreya Rastogi, Jai Garg, Chinmay Palaye
 - The objective of this project is to understand and implement LQR based robot modelling.
 - In this Project, we'll learn to design control strategies & model various robots.
 - We will simulate different systems and robots based on the chosen model.
@@ -11,3 +11,4 @@
 - Daily reports folder contains daily reports till day 6 for the team. After that the interns updated their personal reports.
 - Meeting reports folder contains the minutes of the meetings with the mentors.
 - Project progress report folder tracks the progress of the project so far.
+- Weekly reports folder contains the weekly reports.
