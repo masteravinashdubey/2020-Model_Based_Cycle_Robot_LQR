@@ -1,1 +1,1 @@
-See sepprate branches for daily reports
+See separate branches for daily reports
