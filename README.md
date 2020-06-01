@@ -11,3 +11,4 @@
 - Daily reports folder contains daily reports till day 6 for the team. After that the interns updated their personal reports.
 - Meeting reports folder contains the minutes of the meetings with the mentors.
 - Project progress report folder tracks the progress of the project so far.
+- Weekly reports folder contains the weekly reports.
