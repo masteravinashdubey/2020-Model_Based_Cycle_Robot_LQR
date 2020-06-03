@@ -1,0 +1,147 @@
+>>>>>>>Cycle Bot Day 1<<<<<<<<<
+
+We had a personal meeting with my teammates on discord to know each other better and to make a plan for working the project.
+It was discussed that Chinmay will handle V-rep simulations whereas Shreya and Jai will read more research papers about the project and try to derive mathematical equations for the model. Jai will also help Chinmay in making the 3d models on fusion 360. 
+
+New Things learned:
+We read a number of papers on reaction wheel and cycle bot
+We got familiar with V-rep Software
+
+Resources:
+https://www.matec-conferences.org/articles/matecconf/pdf/2018/11/matecconf_eureca2018_02009.pdf
+https://sci-hub.tw/https://www.morganclaypool.com/doi/abs/10.2200/S00085ED1V01Y200702CRM001
+https://sci-hub.tw/https://ieeexplore.ieee.org/abstract/document/6130176
+https://www.youtube.com/watch?v=Ufcv_WLuKo4
+https://www.youtube.com/watch?v=WB0zCufrHOM&list=PLK0jpMYIBd6DWhiLP5Gzp4jN1MM0vx9ek&t=0s
+https://www.youtube.com/watch?v=4kfBEaTncjI&start=1235s
+
+
+>>>>>>>Cycle Bot Day 2<<<<<<<<<
+
+-> 3D Model of reaction wheel inverted pendulum in Fusion 360.
+-> Report on finding the moment of inertia of a body in Fusion 360.
+-> Read Papers to understand Mathematical Modeling the system.
+
+
+>>>>>>>Cycle Bot Day 3<<<<<<<<<
+
+● Watch tutorials and Videos to learn more about Lua scripting in
+V-rep.
+● Calculated Moment of inertia of the Reaction wheel and pendulum
+using Fusion 360.
+● Wrote Code in V-rep to control the reaction Wheel torque in the
+Simulation
+● Helped write code to control the Bot in V-rep
+
+
+>>>>>>>Cycle Bot Day 4<<<<<<<<<
+
+-> Modified Algorithm code to achieve stable simulation in V-rep
+-> Helped in tuning Q and R Matrix of the control system
+
+
+
+>>>>>>>Cycle Bot Day 5<<<<<<<<<
+
+
+-> Finalized the 3d model of cycle bot on fusion 360.
+-> Helped in stabilizing the simulation of the bot in V-rep.
+
+
+>>>>>>>Cycle Bot Day 6<<<<<<<<<
+
+
+-> Watched tutorials about path planning in V-rep.
+-> Helped Team 2(PID), to complete their task.
+
+
+>>>>>>>Cycle Bot Day 7<<<<<<<<<
+
+-> Reasearch about nest week's work
+-> Learned more about state-Space equations
+
+>>>>>>>Cycle Bot Day 8<<<<<<<<<
+
+-> Held a meeting with mentors to show our progress.
+-> Showed our mentors the simulation of the Cycle Bot V-rep.
+-> Prepared a Script for Control System Video.
+
+>>>>>>>Cycle Bot Day 9<<<<<<<<<
+
+-> Made Slides for the Control Sysytem Vedio with my teammates.
+-> Recorded a Voice over for the video according to script i made yesterday.
+-> Made animations for the Video.
+
+>>>>>>>Cycle Bot Day 10<<<<<<<<
+
+-> Compiled The Control System Vedio Using Adobe After Effects.
+-> Held  meeting with teammates to divide future tasks.
+-> Reaserched about State Variable and how to Select them.
+-> reasearched about Input and Output equation.
+
+>>>>>>>Cycle Bot Day 11<<<<<<<<
+
+-> Reseached about  State Space model and State Variables.
+-> Search some examples to use in the video of me explaining State Space equations.
+-> Prepared a Script for the video.
+-> Hellped in making the PPT for the presentation on Saturday.
+
+>>>>>>>Cycle Bot Day 12<<<<<<<<
+
+-> Held A meeting with the mentors to discuss about tomorrow's presetation.
+-> Completed the Script for State-Space Video.
+-> Recorded a Voice over for the above mentioned video.
+-> Learned how to use audacity to remove noice from the voice over.
+-> Prepared some framed for the vedio.
+
+>>>>>>>Cycle Bot Day 13<<<<<<<<
+
+-> A presentation to Dr. Kavi Arya Sir was held today at 11:00
+-> Worked on the State Space Document 
+-> Made Frames for the Video on State-Space Video.
+
+>>>>>>>Cycle Bot Day 14<<<<<<<<
+
+-> completed the State Space Video.
+-> Completed the Document on State Space equations.
+-> attended talk on Geo-politics.
+
+>>>>>>>Cycle Bot Day 15<<<<<<<<
+
+-> Had a meeting with mentors to discuss about previous week's work.
+-> Worked on the Problem Statement Document with examples.
+-> Worked on Solution Document with examples.
+
+>>>>>>>Cycle Bot Day 16<<<<<<<<
+
+-> Had a meeting with mentors to discuss Week 3 tasks.
+-> Completed State Space equation Documentation was completed
+-> Researched for Week 3 work
+
+>>>>>>>Cycle Bot Day 17<<<<<<<<
+
+-> Made a 3D design of Self Balancing Bot(Med Bot of E-Yantra 20)in fusion 360.
+-> Researched for Video on Dos and Don'ts of Robot hardware.
+
+>>>>>>>Cycle Bot Day 18<<<<<<<<
+
+-> Made Sample data-set for Gy-87.
+-> wrote the script for Video on Dos and Don'ts of Robot hardware.
+-> Made some frames for the video.
+
+>>>>>>>Cycle Bot Day 19<<<<<<<<
+
+-> Recorded The Voice over for the  video 2 of week 3
+-> created the video on Dos and Don'ts in harware projects
+
+>>>>>>>Cycle Bot Day 20<<<<<<<<
+
+-> Researched for this week's tasks.
+-> Made Fusion 360 design video as told.
+-> Eddited week 2 state equations experiments as instructed.
+
+>>>>>>>Cycle Bot Day 21<<<<<<<<
+
+-> Wrote a Script for How to choose hardware video.
+-> Created Frames for the above mentioned Video.
+-> Created Factors to consider while choosing the hardware Video.
