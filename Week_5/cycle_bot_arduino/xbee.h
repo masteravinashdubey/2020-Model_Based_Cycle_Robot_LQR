@@ -24,7 +24,7 @@ class XBee
 		else if(usingSerial==&Serial3) Serial3.begin(9600);
 	}
 
-	void read()
+	void readPacket()
 	{
 		if(serial->available()>29)
 		{
@@ -55,4 +55,7 @@ class XBee
 			}
 		}
 	}
+
+	byte read()
+	 {return serial->read();}
 };
