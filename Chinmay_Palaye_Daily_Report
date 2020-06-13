@@ -131,5 +131,20 @@ constraints between 2 objects.
 	Completed the sensor choice part.
 	Read about ways to set Q and R matrix
 	
+11th June 2020:
+	Read more about Q and R matrices, cost function etc.
+	Completed the tuning part as well.
+	
+12th June 2020:
+	Started Arduino code for cycle bot. In that,
+		wrote XBee class which can work for any serial.
+		wrote motor class with functions to set direction, PWM, or speed.
+		
+13th June 2020:
+	Wrote functions to count encoder pulses.
+	wrote function to enable timer interrupts to measure RPM of a motor.
+	added code to use servo at handle.
+		
+	
 	
 	
