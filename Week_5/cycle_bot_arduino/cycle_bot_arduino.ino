@@ -1,3 +1,5 @@
+#include <MPU6050.h>
+
 #include"xbee.h"
 #include"motor.h"
 #include"mpu.h"
@@ -12,7 +14,7 @@ XBee mod(&Serial1);  	//mention the name of serial being used to communicate wit
 motor reaction(0,0,0);  //change the pin numbers here
 motor drive(1,1,1);     //change the pin numbers here
 Servo handle;
-MPU mpu;
+CompFil mpu;
 int encoderCount=0,prevCount=0;
 double theta,phi;
 double dTheta,dPhi;
@@ -20,15 +22,22 @@ double dTheta,dPhi;
 void setup()
 {
   Serial2.begin(9600);
+  Serial.begin(115200);
   handle.attach(servoPin);
   handle.write(0);
   attachInterrupt(digitalPinToInterrupt(encPin1),encoderHandler,RISING);
-  pinMode(encPin2,INPUT_PULLUP);  
+  pinMode(encPin2,INPUT_PULLUP);
+  mpu.init();
 }
 
 void loop()
 {
-	
+	mpu.read_accel();
+  mpu.read_gyro();
+  mpu.complimentary_filter_roll();
+  Serial.print("Roll:\t");
+  Serial.print(mpu.roll_deg);Serial.print("\t");Serial.print(mpu.roll);
+  Serial.print("Omega:\t");Serial.println(mpu.omega);
 }
 
 void encoderHandler()
@@ -62,6 +71,8 @@ void enable_timer()
 	interrupts();             // enable all interrupts
 }
 
+ISR(TIMER0_COMPA_VECT)
+{}
 
 ISR(TIMER2_COMPA_vect)          // timer compare interrupt service routine
 {
