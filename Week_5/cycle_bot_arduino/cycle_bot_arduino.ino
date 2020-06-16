@@ -1,3 +1,9 @@
+#include <helper_3dmath.h>
+#include <MPU6050.h>
+#include <MPU6050_6Axis_MotionApps20.h>
+#include <MPU6050_6Axis_MotionApps_V6_12.h>
+#include <MPU6050_9Axis_MotionApps41.h>
+
 #include"xbee.h"
 #include"motor.h"
 #include"mpu.h"
@@ -12,7 +18,7 @@ XBee mod(&Serial1);  	//mention the name of serial being used to communicate wit
 motor reaction(0,0,0);  //change the pin numbers here
 motor drive(1,1,1);     //change the pin numbers here
 Servo handle;
-MPU mpu;
+CompFil mpu;
 int encoderCount=0,prevCount=0;
 double theta,phi;
 double dTheta,dPhi;
@@ -62,6 +68,8 @@ void enable_timer()
 	interrupts();             // enable all interrupts
 }
 
+ISR(TIMER0_COMPA_VECT)
+{}
 
 ISR(TIMER2_COMPA_vect)          // timer compare interrupt service routine
 {
