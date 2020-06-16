@@ -87,7 +87,7 @@ public:
 	float roll_deg = 0;
 	float roll = 0, omega = 0;
 
-	void mpu_init()
+	void init()
 	{
 		mpu.initialize();                // Initialise GY-87
 		test();                          // Test connections
@@ -145,4 +145,6 @@ void complimentary_filter_roll()
   // Calculate angular velocity 
   omega = g[1] * (pi / 180);        
 }
+
+
 };

@@ -1,8 +1,4 @@
-#include <helper_3dmath.h>
 #include <MPU6050.h>
-#include <MPU6050_6Axis_MotionApps20.h>
-#include <MPU6050_6Axis_MotionApps_V6_12.h>
-#include <MPU6050_9Axis_MotionApps41.h>
 
 #include"xbee.h"
 #include"motor.h"
@@ -26,15 +22,22 @@ double dTheta,dPhi;
 void setup()
 {
   Serial2.begin(9600);
+  Serial.begin(115200);
   handle.attach(servoPin);
   handle.write(0);
   attachInterrupt(digitalPinToInterrupt(encPin1),encoderHandler,RISING);
-  pinMode(encPin2,INPUT_PULLUP);  
+  pinMode(encPin2,INPUT_PULLUP);
+  mpu.init();
 }
 
 void loop()
 {
-	
+	mpu.read_accel();
+  mpu.read_gyro();
+  mpu.complimentary_filter_roll();
+  Serial.print("Roll:\t");
+  Serial.print(mpu.roll_deg);Serial.print("\t");Serial.print(mpu.roll);
+  Serial.print("Omega:\t");Serial.println(mpu.omega);
 }
 
 void encoderHandler()
