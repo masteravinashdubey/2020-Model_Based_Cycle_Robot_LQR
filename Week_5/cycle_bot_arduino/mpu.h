@@ -145,6 +145,21 @@ void complimentary_filter_roll()
   // Calculate angular velocity 
   omega = g[1] * (pi / 180);        
 }
-
+	
+/*
+ * Function Name: mpu_init
+ * Input: None
+ * Output: None
+ * Logic: Initialize the accelerometer and gyroscope  
+ * Example Call: read_accel()
+ */ 
+void mpu_init()
+{
+  mpu.initialize();                // Initialise GY-87
+  test();                          // Test connections
+  mpu.setFullScaleAccelRange(0);   // Set Accel range to 2g
+  mpu.setFullScaleGyroRange(0);    // Set Gyro range to 131 
+  set_offsets();                   // Set optimum offsets
+}
 
 };
