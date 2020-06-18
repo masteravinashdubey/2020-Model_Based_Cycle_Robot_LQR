@@ -32,9 +32,9 @@ void setup()
 
 void loop()
 {
-	mpu.read_accel();
-  mpu.read_gyro();
-  mpu.complimentary_filter_roll();
+  //mpu.read_accel();
+  //mpu.read_gyro();
+  //mpu.complimentary_filter_roll();
   Serial.print("Roll:\t");
   Serial.print(mpu.roll_deg);Serial.print("\t");Serial.print(mpu.roll);
   Serial.print("Omega:\t");Serial.println(mpu.omega);
@@ -69,10 +69,28 @@ void enable_timer()
 	TCNT2  = 0;
 
 	interrupts();             // enable all interrupts
+	
+	//TIMER0
+	
+	noInterrupts();          // disable all interrupts
+	TCCR0A = (1<<WGM01);     //CTC mode
+	TCCR0B = 7;              //1024 prescaler
+	OCR0A = 156;             // compare match register, setting for 10ms
+	
+	
+	TIMSK0 = (1 << OCIE0A);  // enable timer compare interrupt
+
+	TCNT0  = 0;
+
+	interrupts();             // enable all interrupts
 }
 
 ISR(TIMER0_COMPA_VECT)
-{}
+{
+  mpu.read_accel();
+  mpu.read_gyro();
+  mpu.complimentary_filter_roll();
+}
 
 ISR(TIMER2_COMPA_vect)          // timer compare interrupt service routine
 {
