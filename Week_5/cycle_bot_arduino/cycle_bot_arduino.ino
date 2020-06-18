@@ -61,7 +61,7 @@ void enable_timer()
 	noInterrupts();          // disable all interrupts
 	TCCR2A = (1<<WGM21);     //CTC mode
 	TCCR2B = 7;              //1024 prescaler
-	OCR2A = 156;             // compare match register, setting for 10ms
+	OCR2A = 78;             // compare match register, setting for 5ms
 	
 	
 	TIMSK2 = (1 << OCIE2A);  // enable timer compare interrupt
@@ -75,7 +75,7 @@ void enable_timer()
 	noInterrupts();          // disable all interrupts
 	TCCR0A = (1<<WGM01);     //CTC mode
 	TCCR0B = 7;              //1024 prescaler
-	OCR0A = 156;             // compare match register, setting for 10ms
+	OCR0A = 46;             // compare match register, setting for 3ms
 	
 	
 	TIMSK0 = (1 << OCIE0A);  // enable timer compare interrupt
