@@ -3,6 +3,7 @@
 #include"xbee.h"
 #include"motor.h"
 #include"mpu.h"
+#include"controller_lqr.h"
 
 #include<Servo.h>
 #define PI 3.14159
@@ -17,7 +18,7 @@ Servo handle;
 CompFil mpu;
 int encoderCount=0,prevCount=0;
 double theta,phi;
-double dTheta,dPhi;
+double thetadot,phidot;
 
 void setup()
 {
@@ -38,6 +39,13 @@ void loop()
   Serial.print("Roll:\t");
   Serial.print(mpu.roll_deg);Serial.print("\t");Serial.print(mpu.roll);
   Serial.print("Omega:\t");Serial.println(mpu.omega);
+
+ if ((micros() - prevtime) >= 7000)
+  {
+    lqr();
+    prevtime = micros();
+  }
+
 }
 
 void encoderHandler()
@@ -94,6 +102,6 @@ ISR(TIMER0_COMPA_VECT)
 
 ISR(TIMER2_COMPA_vect)          // timer compare interrupt service routine
 {
-	dPhi = (encoderCount - prevCount)*2*PI/ (280*0.01);	//in rad/sec
+	phidot = (encoderCount - prevCount)*2*PI/ (280*0.01);	//in rad/sec
 	prevCount=encoderCount;
 }
