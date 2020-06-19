@@ -10,7 +10,7 @@ float U = 0, U_new = 0;
 void lqr()
 {
   //Gain matrix optained from octave for sampling time of 7 ms
-  float k[4] = { -34.120, -30.453, -119.949, -10.274};        // { distance, velocity, angle, angular velocity } 
+  float k[4] = {-25.801483, -3.048010, -0.066327, -0.082783 };
                                
   {
     // When traversing in the normal arena         
