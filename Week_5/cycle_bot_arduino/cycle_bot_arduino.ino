@@ -84,7 +84,7 @@ void enable_timer()
 	
 	//noInterrupts();          // disable all interrupts
 	TCCR0A = (1<<WGM01);     //CTC mode
-	TCCR0B = 7;              //1024 prescaler
+	TCCR0B = 5;              //1024 prescaler
 	OCR0A = 46;             // compare match register, setting for 3ms
 	
 	
