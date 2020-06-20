@@ -14,13 +14,6 @@ class CompFil
 	
 	MPU6050 mpu;
 
-
-	void test()
-	{
-		Serial2.println("Testing device connections...");
-		Serial2.println(mpu.testConnection() ? "MPU6050 connection successful" : "MPU6050 connection failed");
-	}
-
 	void set_offsets()
 	{
   Serial.println("in set offset"); 
@@ -92,12 +85,21 @@ public:
 
 	void init()
 	{
-		mpu.initialize();                // Initialise GY-87
-		test();                          // Test connections
-		mpu.setFullScaleAccelRange(0);   // Set Accel range to 2g
-		mpu.setFullScaleGyroRange(0);    // Set Gyro range to 131 
-		set_offsets();   // Set optimum offsets
-   Serial.println("MPU initialised");
+	// join I2C bus (I2Cdev library doesn't do this automatically)
+    #if I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE
+        Wire.begin();
+    #elif I2CDEV_IMPLEMENTATION == I2CDEV_BUILTIN_FASTWIRE
+        Fastwire::setup(400, true);
+    #endif
+
+
+    // initialize device
+//    Serial.println("Initializing I2C devices...");
+    mpu.initialize();
+
+    // verify connection
+//    Serial.println("Testing device connections...");
+//    Serial.println(mpu.testConnection() ? "MPU6050 connection successful" : "MPU6050 connection failed");
 	}
 
 	/*
@@ -110,7 +112,7 @@ public:
 
 void read_accel()
 {
-  Serial.println("in read accel");
+//  Serial.println("in read accel");
   mpu.getAcceleration(&ax, &ay, &az); //To get raw acceleration values 
 
   a[0] = (ax / accel_sf);                   //Divide by scaling factor
@@ -128,7 +130,7 @@ void read_accel()
  */
 void read_gyro()
 {
-  Serial.println("in read gyro");
+//  Serial.println("in read gyro");
   mpu.getRotation(&gx, &gy, &gz);          //To get raw gyro values 
   g[0] = (gx / gyro_sf);                   //Divide by scaling factor
   g[1] = (gy / gyro_sf);
@@ -145,7 +147,7 @@ void read_gyro()
  */
 void complimentary_filter_roll()
 {
-  Serial.println("in read comp filter");
+//  Serial.println("in read comp filter");
   // Compute the roll angle by fusing angles from accel and gyro 
   roll_deg = (1 - comp_alpha) * (roll_deg + g[1] * dT) + (comp_alpha) * (atan(a[0] / abs(a[2]))) * (180 / 3.14); 
   // Convert the angle to radians

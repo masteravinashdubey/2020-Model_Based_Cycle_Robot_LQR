@@ -32,7 +32,7 @@ long prevtime = 0;
 
 void setup()
 {
-  Serial2.begin(9600);
+
   Serial.begin(115200);
   handle.attach(servoPin);
   handle.write(0);
@@ -44,11 +44,11 @@ void setup()
 
 void loop()
 {
-//  Serial.print(mpu.roll_deg);
-//  Serial.print("\t");
-//  Serial.print(mpu.roll);
-//  Serial.print("Omega:\t");
-//  Serial.println(mpu.omega);
+  Serial.print(mpu.roll_deg);
+  Serial.print("\t");
+  Serial.print(mpu.roll);
+  Serial.print("Omega:\t");
+  Serial.println(mpu.omega);
 
  if ((micros() - prevtime) >= 7000)
   {
@@ -112,13 +112,12 @@ ISR(TIMER0_COMPA_VECT)
 
 ISR(TIMER2_COMPA_vect)          // timer compare interrupt service routine
 {
-	  Serial.println("ok");
-mpu.testing();
-//Serial.println("done");   
- // mpu.read_accel();
-//    Serial.println("1");
- //mpu.read_gyro();
- //Serial.println("2");
+//mpu.testing();
+
+  mpu.read_accel();
+    
+ mpu.read_gyro();
+ 
  mpu.complimentary_filter_roll();
-//Serial.println("3");
+
 }
