@@ -3,22 +3,25 @@
 #include"xbee.h"
 #include"motor.h"
 #include"mpu.h"
-#include"controller_lqr.h"
+
 
 #include<Servo.h>
 #define PI 3.14159
-#define encPin1 2     //SET PIN NUMBERS
-#define encPin2 3
-#define servoPin 4
+#define encPin1 18     //SET PIN NUMBERS
+#define encPin2 19
+#define servoPin 9
 
 XBee mod(&Serial1);  	//mention the name of serial being used to communicate with XBee
-motor reaction(0,0,0);  //change the pin numbers here
-motor drive(1,1,1);     //change the pin numbers here
+motor reaction(4,5,10);  //change the pin numbers here
+motor drive(6,7,11);     //change the pin numbers here
 Servo handle;
 CompFil mpu;
 int encoderCount=0,prevCount=0;
 double theta,phi;
 double thetadot,phidot;
+long prevtime = 0;
+
+#include"controller_lqr.h"
 
 void setup()
 {
@@ -33,12 +36,11 @@ void setup()
 
 void loop()
 {
-  //mpu.read_accel();
-  //mpu.read_gyro();
-  //mpu.complimentary_filter_roll();
-  Serial.print("Roll:\t");
-  Serial.print(mpu.roll_deg);Serial.print("\t");Serial.print(mpu.roll);
-  Serial.print("Omega:\t");Serial.println(mpu.omega);
+  Serial.print(mpu.roll_deg);
+  Serial.print("\t");
+  Serial.print(mpu.roll);
+  Serial.print("Omega:\t");
+  Serial.println(mpu.omega);
 
  if ((micros() - prevtime) >= 7000)
   {
@@ -76,11 +78,11 @@ void enable_timer()
 
 	TCNT2  = 0;
 
-	interrupts();             // enable all interrupts
+	//interrupts();             // enable all interrupts
 	
 	//TIMER0
 	
-	noInterrupts();          // disable all interrupts
+	//noInterrupts();          // disable all interrupts
 	TCCR0A = (1<<WGM01);     //CTC mode
 	TCCR0B = 7;              //1024 prescaler
 	OCR0A = 46;             // compare match register, setting for 3ms

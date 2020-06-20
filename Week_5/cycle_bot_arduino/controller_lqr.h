@@ -34,6 +34,6 @@ void lqr()
 
   {
     // Update the PWM  and direction
-    moveMotor(U_new, U_new);
+    reaction.setSpeed(U_new);
   }
 }
