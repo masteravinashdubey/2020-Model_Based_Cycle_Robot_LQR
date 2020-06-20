@@ -1,4 +1,11 @@
-#include <MPU6050.h>
+#include "I2Cdev.h"
+#include "MPU6050.h"
+
+// Arduino Wire library is required if I2Cdev I2CDEV_ARDUINO_WIRE implementation
+// is used in I2Cdev.h
+#if I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE
+    #include "Wire.h"
+#endif
 
 #include"xbee.h"
 #include"motor.h"
@@ -31,16 +38,17 @@ void setup()
   handle.write(0);
   attachInterrupt(digitalPinToInterrupt(encPin1),encoderHandler,RISING);
   pinMode(encPin2,INPUT_PULLUP);
+  enable_timer();
   mpu.init();
 }
 
 void loop()
 {
-  Serial.print(mpu.roll_deg);
-  Serial.print("\t");
-  Serial.print(mpu.roll);
-  Serial.print("Omega:\t");
-  Serial.println(mpu.omega);
+//  Serial.print(mpu.roll_deg);
+//  Serial.print("\t");
+//  Serial.print(mpu.roll);
+//  Serial.print("Omega:\t");
+//  Serial.println(mpu.omega);
 
  if ((micros() - prevtime) >= 7000)
   {
@@ -97,13 +105,20 @@ void enable_timer()
 
 ISR(TIMER0_COMPA_VECT)
 {
-  mpu.read_accel();
-  mpu.read_gyro();
-  mpu.complimentary_filter_roll();
+ phidot = (encoderCount - prevCount)*2*PI/ (280*0.01); //in rad/sec
+  prevCount=encoderCount;
+   Serial.println(phidot);
 }
 
 ISR(TIMER2_COMPA_vect)          // timer compare interrupt service routine
 {
-	phidot = (encoderCount - prevCount)*2*PI/ (280*0.01);	//in rad/sec
-	prevCount=encoderCount;
+	  Serial.println("ok");
+mpu.testing();
+//Serial.println("done");   
+ // mpu.read_accel();
+//    Serial.println("1");
+ //mpu.read_gyro();
+ //Serial.println("2");
+ mpu.complimentary_filter_roll();
+//Serial.println("3");
 }
