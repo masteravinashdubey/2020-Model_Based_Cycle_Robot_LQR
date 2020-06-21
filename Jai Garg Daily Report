@@ -188,3 +188,28 @@ Simulation
 
 -> Completed electronic part of the cycle Bot.
 -> reasearched for fabrication of the remote control
+
+>>>>>>>Cycle Bot Day 30<<<<<<<<<<<<
+
+-> started working on software part of the project
+-> researched and studies some libraries about MPU6050
+
+>>>>>>>>Cycle Bot Day 31<<<<<<<<<<
+
+-> Calculated Mass, center of mass, moment of Inertia of different parts of the bot.
+-> Improved the bot design
+
+>>>>>>>>Cycle Bot Day 32<<<<<<<<<
+
+-> Finalised the fabrication of the Bot by 3d printing the last part.
+-> Tested the hardware of the bot.
+
+>>>>>>>>Cycle Bot Day 33<<<<<<<<<<
+
+-> K matrix for the system was found.
+-> worked on implementing lqr on arduino
+
+>>>>>>>>Cycle Bot Day 34<<<<<<<<<<
+
+-> Helped in writing and debug the arduino code.
+-> Tested some algorithms

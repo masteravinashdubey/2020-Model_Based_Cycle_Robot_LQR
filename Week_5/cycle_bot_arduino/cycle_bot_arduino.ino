@@ -79,6 +79,7 @@ if(check2)
   phidot = (encoderCount - prevCount)*2*PI/ (280*0.01); //in rad/sec
   prevCount=encoderCount;
  // Serial.println(phidot);
+	check2=0;
 }
 }
 
