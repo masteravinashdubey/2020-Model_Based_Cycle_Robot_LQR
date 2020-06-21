@@ -316,4 +316,31 @@ https://www.youtube.com/watch?v=mwn8xhgNpFY&list=PLn8PRpmsu08pzi6EMiYnR-076Mh-q3
 
 
 
+>>>>>> 17/06/2020 Day 33
+
+- Read and studioed the code for biped and tried to take inference from it
+  for our cycle bot code.
+
+
+
+>>>>>> 18/06/2020 Day 34
+
+- Wrote the lqr code in arduino and pushed it.
+- Wrote the lqr code in octave and found out the K matrix.
+
+
+
+>>>>>> 19/06/2020 Day 35
+
+- Put together all the headers and the code.
+
+
+
+>>>>>> 20/06/2020 Day 36
+
+- Compiled all the code files and debugged the code.
+- There was a problem in getting readings from mpu sensor.
+- We tried to solve the above problem and resolved it by changing the code inside ISR.
+
+
 
