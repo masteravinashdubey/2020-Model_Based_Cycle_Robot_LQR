@@ -9,8 +9,10 @@ int dummy = 0;
 float U = 0, U_new = 0;
 /******************/
 
-void lqr()
+void lqr(CompFil mpu)
 {
+  theta = mpu.roll_deg;
+  //Serial.println("in lqr");
   //Gain matrix optained from octave for sampling time of 7 ms
   float k[4] = {-25.801483, -3.048010, -0.066327, -0.082783 };     // { distance, velocity, angle, angular velocity }
 
@@ -33,9 +35,26 @@ void lqr()
 
   U = ( - k[0] * errortheta - k[1] * errorthetadot - k[2] * errorphi - k[3] * errorphidot);
   U_new = constrain(U * 255 / 12 , -255, 255);
-
-  {
+Serial.println(U_new);
+//  if(U_new >= 0)
+//  {
+//    reaction.setDir(1);
+//    if(abs(U_new) >255)
+//    {
+//      reaction.setPWM(255);
+//    }
+//    reaction.setPWM(abs(U_new));
+//  }
+//  else
+//  {
+//    reaction.setDir(1);
+//    if(abs(U_new) >255)
+//    {
+//      reaction.setPWM(255);
+//    }
+//    reaction.setPWM(abs(U_new)); 
+//  }
     // Update the PWM  and direction
-    reaction.setSpeed(U_new);
-  }
+   reaction.setTheSpeed(U_new);
+  
 }

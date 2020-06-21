@@ -20,7 +20,7 @@ public:
 	{
 		dir=d;
 		digitalWrite(dirPin1,d);
-		digitalWrite(dirPin2,~d);
+		digitalWrite(dirPin2,!d);
 	}
 
 	void setPWM(byte p)
@@ -29,7 +29,7 @@ public:
 		analogWrite(pwmPin,pwm);
 	}
 
-	void setSpeed(int speed)
+	void setTheSpeed(int speed)
 	{
 		digitalWrite(dirPin1,speed<=0);
 		digitalWrite(dirPin2,speed>0);

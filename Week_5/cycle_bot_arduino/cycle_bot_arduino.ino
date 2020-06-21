@@ -5,7 +5,7 @@
 #include"xbee.h"
 #include"motor.h"
 #include"mpu.h"
-#include"controller_lqr.h"
+
 #include<Servo.h>
 #define PI 3.14159
 #define encPin1 18     //SET PIN NUMBERS
@@ -15,24 +15,21 @@
 XBee mod(&Serial1);  	//mention the name of serial being used to communicate with XBee
 motor reaction(4,5,10);  //change the pin numbers here
 motor drive(6,7,11);     //change the pin numbers here
+#include"controller_lqr.h"
 Servo handle;
 CompFil mpu;
 int encoderCount=0,prevCount=0;
 
 long prevtime = 0;
-bool check = 0;
 
 void setup()
 {
 
-<<<<<<< HEAD
-=======
   #if I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE
     Wire.begin();
   #elif I2CDEV_IMPLEMENTATION == I2CDEV_BUILTIN_FASTWIRE
     Fastwire::setup(400, true);
   #endif
->>>>>>> 786ccd78db134318431ec6cac7c189ea527784d7
 
   Serial.begin(115200);
   
@@ -40,31 +37,33 @@ void setup()
   Serial.println("going in loop");
   handle.attach(servoPin);
   handle.write(0);
-  attachInterrupt(digitalPinToInterrupt(encPin1),encoderHandler,RISING);
   pinMode(encPin2,INPUT_PULLUP);
+  pinMode(encPin1,INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(encPin1),encoderHandler,RISING);
+  
   enable_timer();
   
 
  Serial.println("ok");
 
 }
-<<<<<<< HEAD
 bool check = 0,check2=0;
-=======
 
->>>>>>> 786ccd78db134318431ec6cac7c189ea527784d7
+
 void loop()
 {
   //Serial.println(check);
-//  Serial.print(mpu.roll_deg);
+  //Serial.println(mpu.roll_deg);
 //  Serial.print("\t");
-  Serial.println(mpu.roll);
+  //Serial.println(mpu.roll);
 //  Serial.print("Omega:\t");
 //  Serial.println(mpu.omega);
 
- if ((micros() - prevtime) >= 7000)
+ if ((micros() - prevtime) >= 7)
   {
-    lqr();
+  //  Serial.println("going in lqr");
+ lqr(mpu);
+
     prevtime = micros();
   }
 
@@ -75,7 +74,12 @@ void loop()
  mpu.complimentary_filter_roll();
  check=0;
   }
-
+if(check2)
+{
+  phidot = (encoderCount - prevCount)*2*PI/ (280*0.01); //in rad/sec
+  prevCount=encoderCount;
+ // Serial.println(phidot);
+}
 }
 
 void encoderHandler()
@@ -116,6 +120,5 @@ ISR(TIMER2_COMPA_vect)
 ISR(TIMER0_COMPA_vect)
 {
   check2=1;
-  Serial.print(check2);
 //  PORTJ^=0x02;
 }
