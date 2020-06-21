@@ -16,7 +16,7 @@ class CompFil
 
 	void set_offsets()
 	{
-  Serial.println("in set offset"); 
+//  Serial.println("in set offset"); 
 		// Offsets calculated by putting gy-87 on a flat surface for 5 minutes
 		mpu.setXAccelOffset(-4636);   // Set offset for X acceleration
 		mpu.setYAccelOffset(1106);    // Set offset for Y acceleration
@@ -36,7 +36,7 @@ class CompFil
 	 */ 
 	void low_pass_filter(float Ax, float Ay, float Az)
 	{
-  Serial.println("in low pass");
+
 		if (n)
 		{
 			lpx = (1 - alpha) * Ax;    //Low Pass filtered AccelX
@@ -61,7 +61,7 @@ class CompFil
 	 */
 	void high_pass_filter(float Gx, float Gy, float Gz)
 	{
-   Serial.println("in high pass");
+
 		if (m)
 		{
 			hpx = (1 - alpha) * Gx;     //High Pass filtered GyroX
@@ -86,20 +86,22 @@ public:
 	void init()
 	{
 	// join I2C bus (I2Cdev library doesn't do this automatically)
-    #if I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE
+ 
+  #if I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE
         Wire.begin();
     #elif I2CDEV_IMPLEMENTATION == I2CDEV_BUILTIN_FASTWIRE
         Fastwire::setup(400, true);
     #endif
 
 
+
     // initialize device
-//    Serial.println("Initializing I2C devices...");
+    Serial.println("Initializing I2C devices...");
     mpu.initialize();
 
     // verify connection
-//    Serial.println("Testing device connections...");
-//    Serial.println(mpu.testConnection() ? "MPU6050 connection successful" : "MPU6050 connection failed");
+    Serial.println("Testing device connections...");
+    Serial.println(mpu.testConnection() ? "MPU6050 connection successful" : "MPU6050 connection failed");
 	}
 
 	/*
