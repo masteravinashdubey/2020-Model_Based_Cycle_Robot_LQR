@@ -1,17 +1,11 @@
 #include "I2Cdev.h"
 #include "MPU6050.h"
-
-// Arduino Wire library is required if I2Cdev I2CDEV_ARDUINO_WIRE implementation
-// is used in I2Cdev.h
-#if I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE
-    #include "Wire.h"
-#endif
+#include "Wire.h"
 
 #include"xbee.h"
 #include"motor.h"
 #include"mpu.h"
-
-
+#include"controller_lqr.h"
 #include<Servo.h>
 #define PI 3.14159
 #define encPin1 18     //SET PIN NUMBERS
@@ -24,14 +18,18 @@ motor drive(6,7,11);     //change the pin numbers here
 Servo handle;
 CompFil mpu;
 int encoderCount=0,prevCount=0;
-double theta,phi;
-double thetadot,phidot;
-long prevtime = 0;
 
-#include"controller_lqr.h"
+long prevtime = 0;
+bool check = 0;
 
 void setup()
 {
+
+  #if I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE
+    Wire.begin();
+  #elif I2CDEV_IMPLEMENTATION == I2CDEV_BUILTIN_FASTWIRE
+    Fastwire::setup(400, true);
+  #endif
 
   Serial.begin(115200);
   handle.attach(servoPin);
@@ -41,7 +39,7 @@ void setup()
   enable_timer();
   mpu.init();
 }
-bool check = 0;
+
 void loop()
 {
   Serial.print(mpu.roll_deg);

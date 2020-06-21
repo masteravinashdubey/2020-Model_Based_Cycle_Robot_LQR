@@ -2,6 +2,8 @@
 /*Global Variables*/
 float reqthetadot = 0, reqtheta = 0, reqphi = 0, reqphidot = 0;
 float errorthetadot = 0, errortheta = 0, errorphi = 0, errorphidot = 0;
+double theta,phi;
+double thetadot,phidot;
 const float angle_offset = (0.01745 * 3);
 int dummy = 0;
 float U = 0, U_new = 0;
