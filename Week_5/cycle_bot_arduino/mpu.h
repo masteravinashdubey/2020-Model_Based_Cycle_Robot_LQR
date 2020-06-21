@@ -151,7 +151,7 @@ void complimentary_filter_roll()
 {
 //  Serial.println("in read comp filter");
   // Compute the roll angle by fusing angles from accel and gyro 
-  roll_deg = (1 - comp_alpha) * (roll_deg + g[1] * dT) + (comp_alpha) * (atan(a[0] / abs(a[2]))) * (180 / 3.14); 
+  roll_deg = (1 - comp_alpha) * (roll_deg + g[2] * dT) + (comp_alpha) * (atan(a[1] / abs(a[0]))) * (180 / 3.14); 
   // Convert the angle to radians
   roll = roll_deg * (3.14 / 180);
   // Calculate angular velocity 
