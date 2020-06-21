@@ -41,7 +41,7 @@ void setup()
   enable_timer();
   mpu.init();
 }
-
+bool check = 0;
 void loop()
 {
   Serial.print(mpu.roll_deg);
@@ -54,6 +54,14 @@ void loop()
   {
     lqr();
     prevtime = micros();
+  }
+
+  if(check)
+  {
+ mpu.read_accel(); 
+ mpu.read_gyro();
+ mpu.complimentary_filter_roll();
+ check=0;
   }
 
 }
@@ -113,11 +121,5 @@ ISR(TIMER0_COMPA_VECT)
 ISR(TIMER2_COMPA_vect)          // timer compare interrupt service routine
 {
 //mpu.testing();
-
-  mpu.read_accel();
-    
- mpu.read_gyro();
- 
- mpu.complimentary_filter_roll();
-
+check=1;
 }
