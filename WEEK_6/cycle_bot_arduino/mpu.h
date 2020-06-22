@@ -155,7 +155,7 @@ void complimentary_filter_roll()
   // Convert the angle to radians
   roll = roll_deg * (3.14 / 180);
   // Calculate angular velocity 
-  omega = g[1] * (pi / 180);        
+  omega = g[2] * (pi / 180);        
 }
 void testing()
 {

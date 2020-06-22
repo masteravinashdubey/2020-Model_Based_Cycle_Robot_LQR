@@ -1,4 +1,4 @@
-@@ -1,125 +0,0 @@
+
 #include "I2Cdev.h"
 #include "MPU6050.h"
 #include "Wire.h"
@@ -19,7 +19,7 @@ motor drive(6,7,3);     //change the pin numbers here
 #include"controller_lqr.h"
 Servo handle;
 CompFil mpu;
-int encoderCount=0,prevCount=0;
+volatile int encoderCount=0,prevCount=0;
 
 long prevtime = 0;
 
@@ -79,7 +79,7 @@ if(check2)
 {
   phidot = (encoderCount - prevCount)*2*PI/ (280*0.01); //in rad/sec
   prevCount=encoderCount;
- // Serial.println(phidot);
+ Serial.println(encoderCount);
 	check2=0;
 }
 }
