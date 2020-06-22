@@ -34,6 +34,6 @@ public:
 		digitalWrite(dirPin1,speed<=0);
 		digitalWrite(dirPin2,speed>0);
 		if(abs(speed)>255) speed=255;
-		analogWrite(pwmPin,speed);
+		analogWrite(pwmPin,abs(speed));
 	}
 };
