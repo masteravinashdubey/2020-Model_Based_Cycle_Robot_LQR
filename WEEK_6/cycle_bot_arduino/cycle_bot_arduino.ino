@@ -20,7 +20,7 @@ motor reaction(30, 31, 3); //change the pin numbers here
 motor drive(32, 33, 4);   //change the pin numbers here
 #include"controller_lqr.h"
 Servo handle;
-CompFil mpu6050;
+//CompFil mpu6050;
 volatile int encoderCount = 0, prevCount = 0;
 float previousRoll=0,angVelocity=0;
 long prevtime = 0;
@@ -70,7 +70,7 @@ void loop()
   if ((micros() - prevtime) >= 5)
   {
     //  Serial.println("going in lqr");
-    lqr(ypr[0],angVelocity, phi, phidot);
+    lqr(ypr[2],angVelocity, phi, phidot);
 
     prevtime = micros();
   }
@@ -81,8 +81,8 @@ getDMP();
 //    mpu6050.read_gyro();
 //    mpu6050.complimentary_filter_roll();
     // Serial.println(mpu.roll_deg);
-    angVelocity=(ypr[0]-previousRoll)/0.003;
-    previousRoll=ypr[0];
+    angVelocity=(ypr[2]-previousRoll)/0.003;
+    previousRoll=ypr[2];
  
     check = 0;
   }

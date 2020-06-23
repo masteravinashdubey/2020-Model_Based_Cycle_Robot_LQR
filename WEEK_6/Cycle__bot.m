@@ -19,11 +19,11 @@ A = [0 1 0 0;                           % state matrix
 B = [0;-1/a;0;(a+I2)/(a*I2)];            % input matrix
 C = eye(4);                             % output matrix
 D = [0;0;0;0];                          % feed-forward matrix
-Q = [200 0 0 0;
+Q = [1000 0 0 0;
      0 10 0 0;                          % Q matrix of system
-     0 0 1 0;
+     0 0 0.1 0;
      0 0 0 1];
-R = 10;                                 % R parameter
+R = 0.001;                                 % R parameter
 K = lqr(A,B,Q,R)                        % lqr function 
 
 Ts = 1/100;
