@@ -1,60 +1,68 @@
 /*Global Variables*/
 float reqthetadot = 0, reqtheta = 0, reqphi = 0, reqphidot = 0;
 float errorthetadot = 0, errortheta = 0, errorphi = 0, errorphidot = 0;
-double theta,phi;
-double thetadot,phidot;
-const float angle_offset = (0.01745 * 3);
+double theta, phi;
+double thetadot, phidot;
+const float angle_offset = 00.5;
 int dummy = 0;
-float U = 0, U_new = 0;
+float U = 0, U_new = 0,U_previous=0;
 /******************/
 
-void lqr(CompFil mpu)
+void lqr(double roll,double angVelocity, double phi, double phidot)
 {
   //Serial.println("in lqr");
   //Gain matrix optained from octave for sampling time of 7 ms
-  float k[4] = {-25.801483, -3.048010, -0.066327, -0.082783 };     // { distance, velocity, angle, angular velocity }
-Serial.print("roll= ");
-  Serial.println(mpu.roll_deg);
-  Serial.print("omega= ");
-  Serial.println(mpu.omega);
-    // When traversing in the normal arena         
-    
-      k[1] += k[0];
-      k[0] = 0;
-      reqtheta = 0;
-      reqthetadot = 0;
-      reqphi = 0;
-      reqphidot = 0;
-    
-  
-  errortheta = (mpu.roll_deg - reqtheta) + angle_offset ;    //Error in the distance covered
-  //Serial.println(errortheta);
-  errorthetadot = (mpu.omega - reqthetadot);           //Error in the velocity
+  float k[4] = {-25.315512  , -2.982085 ,  -0.022207 ,  -0.075742};    // { distance, velocity, angle, angular velocity }
+ // Serial.println(roll);
+  //  Serial.println(mpu.roll_deg);
+  //  Serial.print("omega= ");
+  //  Serial.println(mpu.omega);
+//     Serial.println(phi);
+  // When traversing in the normal arena
+
+  // k[1] += k[0];
+  //k[0] = 0;
+  reqtheta = 0;
+  reqthetadot = 0;
+  reqphi = 0;
+  reqphidot = 0;
+
+
+  errortheta = (roll - reqtheta) ;    //Error in the distance covered
+  //  Serial.print(errortheta);
+  //  Serial.print("\t");
+  errorthetadot = (angVelocity - reqthetadot);           //Error in the velocity
   errorphi = (phi - reqphi) ;                         //Error in the tilt angle
   errorphidot = (phidot - reqphidot);                 //Error in angular velocity
 
-  U = (-1* (k[0] * errortheta) - (k[1] * errorthetadot) - (k[2] * errorphi) - (k[3] * errorphidot));
-  U_new = constrain(U * 255 / 12 , -255, 255);
-//Serial.println(U_new);
-//  if(U_new >= 0)
-//  {
-//    reaction.setDir(1);
-//    if(abs(U_new) >255)
-//    {
-//      reaction.setPWM(255);
-//    }
-//    reaction.setPWM(abs(U_new));
-//  }
-//  else
-//  {
-//    reaction.setDir(1);
-//    if(abs(U_new) >255)
-//    {
-//      reaction.setPWM(255);
-//    }
-//    reaction.setPWM(abs(U_new)); 
-//  }
-    // Update the PWM  and direction
-   reaction.setTheSpeed(U_new);
+  U = (-1 * (k[0] * errortheta) - (k[1] * errorthetadot) - (0 * errorphi) - (k[3] * errorphidot));
+//  U=U-U_previous;
+//  U_previous=U;
+  U_new = constrain(U *255/6, -255, 255);
   
+  //U_new = U * 255/12;
+  //Serial.println(U);
+ 
+ Serial.println(U_new);
+  //  if(U_new >= 0)
+  //  {
+  //    reaction.setDir(1);
+  //    if(abs(U_new) >255)
+  //    {
+  //      reaction.setPWM(255);
+  //    }
+  //    reaction.setPWM(abs(U_new));
+  //  }
+  //  else
+  //  {
+  //    reaction.setDir(1);
+  //    if(abs(U_new) >255)
+  //    {
+  //      reaction.setPWM(255);
+  //    }
+  //    reaction.setPWM(abs(U_new));
+  //  }
+  // Update the PWM  and direction
+  reaction.setTheSpeed(U_new);
+
 }
