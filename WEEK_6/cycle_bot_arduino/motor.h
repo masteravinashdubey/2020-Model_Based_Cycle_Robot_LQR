@@ -4,6 +4,7 @@ class motor
     byte dirPin1, dirPin2;
     bool dir = 0;
     byte pwm = 0;
+    const int deadbandRight = 55, deadbandLeft = 50;
 
   public:
     motor(byte dirPin1, byte dirPin2, byte pwmPin)
@@ -29,12 +30,14 @@ class motor
       analogWrite(pwmPin, pwm);
     }
 
-    void setTheSpeed(int speed)
+    void setTheSpeed(int mSpeed)
     {
-      
-      digitalWrite(dirPin1, speed <= 0);
-      digitalWrite(dirPin2, speed > 0);
-      if (abs(speed) > 255) speed = 255;
-      analogWrite(pwmPin, abs(speed));
+
+      digitalWrite(dirPin1, mSpeed <= 0);
+      digitalWrite(dirPin2, mSpeed > 0);
+      if (mSpeed < 0)
+        analogWrite(pwmPin, map(abs(mSpeed), 0, 255, deadbandLeft, 255));
+      else
+        analogWrite(pwmPin, map(abs(mSpeed), 0, 255, deadbandRight, 255));
     }
 };
