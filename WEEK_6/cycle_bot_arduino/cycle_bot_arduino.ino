@@ -103,6 +103,9 @@ void encoderHandler()
     encoderCount--;
 
   phi = encoderCount * 2 * PI / 280;
+//  Serial.println(encoderCount);
+//  if(phi>360)
+//  encoderCount=0;
 }
 
 void enable_timer()
