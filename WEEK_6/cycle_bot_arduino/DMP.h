@@ -48,12 +48,12 @@
       Serial.println(F("Initializing DMP..."));
       devStatus = mpu.dmpInitialize();
 
-      mpu.setXAccelOffset(-4636);   // Set offset for X acceleration
-      mpu.setYAccelOffset(1106);    // Set offset for Y acceleration
-      mpu.setZAccelOffset(2694);    // Set offset for Z acceleration
+      mpu.setXAccelOffset(-4638);   // Set offset for X acceleration
+      mpu.setYAccelOffset(1098);    // Set offset for Y acceleration
+      mpu.setZAccelOffset(2630);    // Set offset for Z acceleration
 
-      mpu.setXGyroOffset(261);     //Set offset for X gyro
-      mpu.setYGyroOffset(-34);       //Set offset for Y gyro
+      mpu.setXGyroOffset(258);     //Set offset for X gyro
+      mpu.setYGyroOffset(-33);       //Set offset for Y gyro
       mpu.setZGyroOffset(0);      //Set offset for Z gyro
 
       delay(500);

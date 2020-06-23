@@ -12,8 +12,8 @@ void lqr(double roll,double angVelocity, double phi, double phidot)
 {
   //Serial.println("in lqr");
   //Gain matrix optained from octave for sampling time of 7 ms
-  float k[4] = { -15.021 , -1.7692 , -0.040818 , -0.045833 };    // { distance, velocity, angle, angular velocity }
-  //Serial.print("roll= ");
+  float k[4] = { -26.256 , -3.1408 , -0.075383 , -0.084273 };    // { distance, velocity, angle, angular velocity }
+ // Serial.println(roll);
   //  Serial.println(mpu.roll_deg);
   //  Serial.print("omega= ");
   //  Serial.println(mpu.omega);
@@ -39,7 +39,8 @@ void lqr(double roll,double angVelocity, double phi, double phidot)
   U_new = constrain(U * 255 / 12 , -255, 255);
   //U_new = U * 255/12;
  // Serial.println(U);
- Serial.println(U_new);
+ 
+ //Serial.println(U_new);
   //  if(U_new >= 0)
   //  {
   //    reaction.setDir(1);

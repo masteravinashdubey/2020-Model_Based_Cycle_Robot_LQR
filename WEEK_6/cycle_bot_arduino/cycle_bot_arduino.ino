@@ -102,7 +102,7 @@ void encoderHandler()
   else
     encoderCount--;
 
-  phi = encoderCount * 2 * PI / 280;
+  phi = encoderCount * 2 * PI / 270;
 //  Serial.println(encoderCount);
 //  if(phi>360)
 //  encoderCount=0;

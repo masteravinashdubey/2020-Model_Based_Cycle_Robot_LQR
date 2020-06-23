@@ -31,6 +31,7 @@ class motor
 
     void setTheSpeed(int speed)
     {
+      
       digitalWrite(dirPin1, speed <= 0);
       digitalWrite(dirPin2, speed > 0);
       if (abs(speed) > 255) speed = 255;
