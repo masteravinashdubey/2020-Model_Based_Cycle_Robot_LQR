@@ -5,17 +5,17 @@ double theta, phi;
 double thetadot, phidot;
 const float angle_offset = 00.5;
 int dummy = 0;
-float U = 0, U_new = 0,U_previous=0;
+float U = 0, U_new = 0, U_previous = 0;
 /******************/
 
-void lqr(double roll,double angVelocity, double phi, double phidot)
+void lqr(double roll, double angVelocity, double phi, double phidot)
 {
   //Serial.println("in lqr");
   //Gain matrix optained from octave for sampling time of 7 ms
-  float k[4] = {102.72519  ,  13.55241  ,  -0.62554  ,   1.56145};    // { distance, velocity, angle, angular velocity }
- 
+  float k[4] = {250.56  ,  52.233  ,  -0.0042982  ,  5.4638};    // { distance, velocity, angle, angular velocity }
+
   //  Serial.println(mpu.omega);
-//     Serial.println(phi);
+  //     Serial.println(phi);
   // When traversing in the normal arena
 
   // k[1] += k[0];
@@ -25,10 +25,11 @@ void lqr(double roll,double angVelocity, double phi, double phidot)
   reqphi = 0;
   reqphidot = 0;
 
-//roll= roll* 180 / M_PI;
- //Serial.print(roll);
-  
-  // Serial.print("\t");
+  roll = roll * 180 / M_PI;
+  angVelocity = angVelocity * 180 / M_PI;
+  //Serial.print(roll);
+
+  //Serial.print("\t");
   errortheta = (roll - reqtheta) ;    //Error in the distance covered
   //  Serial.print(errortheta);
   //  Serial.print("\t");
@@ -37,14 +38,14 @@ void lqr(double roll,double angVelocity, double phi, double phidot)
   errorphidot = (phidot - reqphidot);                 //Error in angular velocity
 
   U = (-1 * (k[0] * errortheta) - (k[1] * errorthetadot) - (k[2] * errorphi) - (k[3] * errorphidot));
-//  U=U-U_previous;
-//  U_previous=U;
-  U_new = constrain(U *255/12, -255, 255);
-  
+  //  U=U-U_previous;
+  //  U_previous=U;
+  U_new = constrain(U * 255 / 36, -255, 255);
+
   //U_new = U * 255/12;
   //Serial.println(U);
- 
-Serial.println(U_new);
+
+  //Serial.println(U_new);
   //  if(U_new >= 0)
   //  {
   //    reaction.setDir(1);
@@ -64,6 +65,10 @@ Serial.println(U_new);
   //    reaction.setPWM(abs(U_new));
   //  }
   // Update the PWM  and direction
-  reaction.setTheSpeed(U_new);
+  //reaction.setTheSpeed(U_new);
+
+  reaction.setTheSpeed(U);
+
+
 
 }
