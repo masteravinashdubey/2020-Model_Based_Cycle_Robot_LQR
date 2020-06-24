@@ -33,10 +33,10 @@ B = [0;b2;0;b4];            % input matrix
 C = eye(4);                             % output matrix
 D = [0;0;0;0];                          % feed-forward matrix
 Q = [100 0 0 0;
-     0 10 0 0;                          % Q matrix of system
-     0 0 0.1 0;
-     0 0 0 0.05];
-R = 0.1;                                 % R parameter
+     0 100 0 0;                          % Q matrix of system
+     0 0 0.05 0;
+     0 0 0 0.1];
+R = 0.01;                                 % R parameter
 %K = lqr(A,B,Q,R)                        % lqr function 
 
 Ts = 1/200;

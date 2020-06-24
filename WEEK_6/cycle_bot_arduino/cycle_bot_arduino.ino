@@ -70,17 +70,18 @@ void loop()
   if ((micros() - prevtime) >= 5000)
   {
     //  Serial.println("going in lqr");
-    lqr(ypr[2],angVelocity, phi, phidot);
+ lqr(ypr[2],angVelocity, phi, phidot);
 
     prevtime = micros();
   }
-getDMP();
+
   if (check)
   {
 //    mpu6050.read_accel();
 //    mpu6050.read_gyro();
 //    mpu6050.complimentary_filter_roll();
     // Serial.println(mpu.roll_deg);
+    getDMP();
     angVelocity=(ypr[2]-previousRoll)/0.003;
     previousRoll=ypr[2];
  
@@ -88,6 +89,7 @@ getDMP();
   }
   if (check2)
   {
+       
     phidot = (encoderCount - prevCount) * 2 * PI / (280 * 0.01); //in rad/sec
     prevCount = encoderCount;
     //Serial.println(phidot);
