@@ -16,7 +16,7 @@
 #define servoPin 9
 
 //XBee mod(&Serial1);  	//mention the name of serial being used to communicate with XBee
-motor reaction(30, 31, 3); //change the pin numbers here
+motor reaction(31, 30, 3); //change the pin numbers here
 motor drive(32, 33, 4);   //change the pin numbers here
 #include"controller_lqr.h"
 Servo handle;

@@ -12,10 +12,8 @@ void lqr(double roll,double angVelocity, double phi, double phidot)
 {
   //Serial.println("in lqr");
   //Gain matrix optained from octave for sampling time of 7 ms
-  float k[4] = {160.1  ,  19.191  ,  -0.79668  ,  2.3779};    // { distance, velocity, angle, angular velocity }
- // Serial.println(roll);
-  //  Serial.println(mpu.roll_deg);
-  //  Serial.print("omega= ");
+  float k[4] = {102.72519  ,  13.55241  ,  -0.62554  ,   1.56145};    // { distance, velocity, angle, angular velocity }
+ 
   //  Serial.println(mpu.omega);
 //     Serial.println(phi);
   // When traversing in the normal arena
@@ -27,7 +25,10 @@ void lqr(double roll,double angVelocity, double phi, double phidot)
   reqphi = 0;
   reqphidot = 0;
 
-
+//roll= roll* 180 / M_PI;
+ Serial.print(roll);
+  
+   Serial.print("\t");
   errortheta = (roll - reqtheta) ;    //Error in the distance covered
   //  Serial.print(errortheta);
   //  Serial.print("\t");
@@ -35,10 +36,10 @@ void lqr(double roll,double angVelocity, double phi, double phidot)
   errorphi = (phi - reqphi) ;                         //Error in the tilt angle
   errorphidot = (phidot - reqphidot);                 //Error in angular velocity
 
-  U = (-1 * (k[0] * errortheta) - (k[1] * errorthetadot) - (0 * errorphi) - (k[3] * errorphidot));
+  U = (-1 * (k[0] * errortheta) - (k[1] * errorthetadot) - (k[2] * errorphi) - (k[3] * errorphidot));
 //  U=U-U_previous;
 //  U_previous=U;
-  U_new = constrain(U *255/6, -255, 255);
+  U_new = constrain(U *255/12, -255, 255);
   
   //U_new = U * 255/12;
   //Serial.println(U);
