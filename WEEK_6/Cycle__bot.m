@@ -39,7 +39,7 @@ Q = [20 0 0 0;
 R = 0.001;                                 % R parameter
 %K = lqr(A,B,Q,R)                        % lqr function 
 
-Ts = 1/100;
+Ts = 1/200;
 sys_s = ss(A,B,C,D);
 sys_d = c2d(sys_s,Ts,'zoh');
  
