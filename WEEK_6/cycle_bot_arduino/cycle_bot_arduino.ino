@@ -1,4 +1,4 @@
-
+#define F_CPU 16000000
 #include "I2Cdev.h"
 //#include "MPU6050.h"
 #include<Arduino.h>
@@ -67,7 +67,7 @@ void loop()
   //  Serial.print("Omega:\t");
   //  Serial.println(mpu.omega);
 
-  if ((micros() - prevtime) >= 5)
+  if ((micros() - prevtime) >= 5000)
   {
     //  Serial.println("going in lqr");
     lqr(ypr[2],angVelocity, phi, phidot);

@@ -26,9 +26,9 @@ void lqr(double roll,double angVelocity, double phi, double phidot)
   reqphidot = 0;
 
 //roll= roll* 180 / M_PI;
- Serial.print(roll);
+ //Serial.print(roll);
   
-   Serial.print("\t");
+  // Serial.print("\t");
   errortheta = (roll - reqtheta) ;    //Error in the distance covered
   //  Serial.print(errortheta);
   //  Serial.print("\t");
