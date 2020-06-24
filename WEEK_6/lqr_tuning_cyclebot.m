@@ -32,10 +32,10 @@ A = [0 1 0 0;                           % state matrix
 B = [0;b2;0;b4];            % input matrix
 C = eye(4);                             % output matrix
 D = [0;0;0;0];                          % feed-forward matrix
-Q = [20 0 0 0;
-     0 1 0 0;                          % Q matrix of system
-     0 0 1 0;
-     0 0 0 1];
+Q = [100 0 0 0;
+     0 1000 0 0;                          % Q matrix of system
+     0 0 0.00001 0;
+     0 0 0 0.0001];
 R = 0.0001;                                 % R parameter
 %K = lqr(A,B,Q,R)                        % lqr function 
 
@@ -50,7 +50,7 @@ Dc = [sys_d.D];                % Dc is the discrete D matrix
 K = dlqr(A_d,B_d,Q,R)
         % dlqr function
 
- x_initial = [31.4,0,0,0]; % initial point
+ x_initial = [0.087,0,0,0]; % initial point
  x_set = [0;0;0;0];             % end point
  sys_cl = ss((A_d-B_d*K),B_d,Cc,Dc,Ts);   
  t = 0:0.01:20;
