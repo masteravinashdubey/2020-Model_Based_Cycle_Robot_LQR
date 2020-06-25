@@ -70,7 +70,7 @@ void loop()
   if ((micros() - prevtime) >= 5000)
   {
     //  Serial.println("going in lqr");
- lqr(ypr[2],angVelocity, phi, phidot);
+// lqr(ypr[2],angVelocity, phi, phidot);
 
     prevtime = micros();
   }
@@ -82,9 +82,9 @@ getDMP();
 //    mpu6050.complimentary_filter_roll();
     // Serial.println(mpu.roll_deg);
     
-    angVelocity=(ypr[2]-previousRoll)/0.003;
+    angVelocity=(ypr[2]-previousRoll)/0.005;
     previousRoll=ypr[2];
- 
+ lqr(ypr[2],angVelocity, phi, phidot);
     check = 0;
   }
   if (check2)
@@ -116,13 +116,13 @@ void enable_timer()
 
   TCCR2A = (1 << WGM21);   //CTC mode
   TCCR2B = 7;              //1024 prescaler
-  OCR2A = sampleTime(5);             // compare match register, setting for 10ms
+  OCR2A = sampleTime(3);             // compare match register, setting for 10ms
   TIMSK2 = (1 << OCIE2A);  // enable timer compare interrupt
   TCNT2  = 0;
 
   TCCR0A = (1 << WGM01);          //CTC mode
   TCCR0B = (1 << CS02) | (1 << CS00); //1024 prescaler
-  OCR0A = sampleTime(3);                     // compare match register, setting for 3ms
+  OCR0A = sampleTime(5);                     // compare match register, setting for 3ms
   TIMSK0 = (1 << OCIE0A);         // enable timer compare interrupt
   TCNT0  = 0;
 

@@ -4,7 +4,7 @@ class motor
     byte dirPin1, dirPin2;
     bool dir = 0;
     byte pwm = 0;
-    const int deadbandRight = 50, deadbandLeft = 45;
+    const int deadbandRight = 40, deadbandLeft = 35;
 
   public:
     motor(byte dirPin1, byte dirPin2, byte pwmPin)

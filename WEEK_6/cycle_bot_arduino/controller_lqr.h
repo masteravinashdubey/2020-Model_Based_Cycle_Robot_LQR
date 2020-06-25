@@ -12,7 +12,9 @@ void lqr(double roll, double angVelocity, double phi, double phidot)
 {
   //Serial.println("in lqr");
   //Gain matrix optained from octave for sampling time of 7 ms
-  float k[4] = {250.56  ,  52.233  ,  -0.0042982  ,  5.4638};    // { distance, velocity, angle, angular velocity }
+  double
+  
+  k[4] = {9.1684e+03 ,  6.0804e+02 ,  2.0196e-09  , 3.6296e+01};    // { distance, velocity, angle, angular velocity }
 
   //  Serial.println(mpu.omega);
   //     Serial.println(phi);
@@ -25,9 +27,9 @@ void lqr(double roll, double angVelocity, double phi, double phidot)
   reqphi = 0;
   reqphidot = 0;
 
-  roll = roll * 180 / M_PI;
-  angVelocity = angVelocity * 180 / M_PI;
-  //Serial.println(roll);
+//  roll = roll * 180 / M_PI;
+//  angVelocity = angVelocity * 180 / M_PI;
+  Serial.println(roll);
 
   //Serial.print("\t");
   errortheta = (roll - reqtheta) ;    //Error in the distance covered
@@ -40,12 +42,12 @@ void lqr(double roll, double angVelocity, double phi, double phidot)
   U = (-1 * (k[0] * errortheta) - (k[1] * errorthetadot) - (k[2] * errorphi) - (k[3] * errorphidot));
   //  U=U-U_previous;
   //  U_previous=U;
-  U_new = constrain(U * 255 / 36, -255, 255);
+  U_new = constrain(U * 255 /12, -255, 255);
 
   //U_new = U * 255/12;
-  Serial.println(U);
+//  Serial.println(U);
 
-  //Serial.println(U_new);
+ //Serial.println(U_new);
   //  if(U_new >= 0)
   //  {
   //    reaction.setDir(1);
@@ -65,9 +67,9 @@ void lqr(double roll, double angVelocity, double phi, double phidot)
   //    reaction.setPWM(abs(U_new));
   //  }
   // Update the PWM  and direction
-  //reaction.setTheSpeed(U_new);
+  reaction.setTheSpeed(U_new);
 
-  reaction.setTheSpeed(U);
+  //reaction.setTheSpeed(U);
 
 
 
