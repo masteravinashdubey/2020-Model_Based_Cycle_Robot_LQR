@@ -74,15 +74,15 @@ void loop()
 
     prevtime = micros();
   }
-
+getDMP();
   if (check)
   {
 //    mpu6050.read_accel();
 //    mpu6050.read_gyro();
 //    mpu6050.complimentary_filter_roll();
     // Serial.println(mpu.roll_deg);
-    getDMP();
-    angVelocity=(ypr[2]-previousRoll)/0.001;
+    
+    angVelocity=(ypr[2]-previousRoll)/0.003;
     previousRoll=ypr[2];
  
     check = 0;
@@ -122,7 +122,7 @@ void enable_timer()
 
   TCCR0A = (1 << WGM01);          //CTC mode
   TCCR0B = (1 << CS02) | (1 << CS00); //1024 prescaler
-  OCR0A = sampleTime(1);                     // compare match register, setting for 3ms
+  OCR0A = sampleTime(3);                     // compare match register, setting for 3ms
   TIMSK0 = (1 << OCIE0A);         // enable timer compare interrupt
   TCNT0  = 0;
 

@@ -36,7 +36,7 @@ Q = [100 0 0 0;
      0 1000 0 0;                          % Q matrix of system
      0 0 0.00001 0;
      0 0 0 0.0001];
-R = 0.0001;                                 % R parameter
+R = 0.01;                                 % R parameter
 %K = lqr(A,B,Q,R)                        % lqr function 
 
 Ts = 1/200;

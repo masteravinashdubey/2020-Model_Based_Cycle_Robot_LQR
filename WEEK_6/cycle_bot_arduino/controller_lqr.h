@@ -27,7 +27,7 @@ void lqr(double roll, double angVelocity, double phi, double phidot)
 
   roll = roll * 180 / M_PI;
   angVelocity = angVelocity * 180 / M_PI;
-  //Serial.print(roll);
+  //Serial.println(roll);
 
   //Serial.print("\t");
   errortheta = (roll - reqtheta) ;    //Error in the distance covered
@@ -43,7 +43,7 @@ void lqr(double roll, double angVelocity, double phi, double phidot)
   U_new = constrain(U * 255 / 36, -255, 255);
 
   //U_new = U * 255/12;
-  //Serial.println(U);
+  Serial.println(U);
 
   //Serial.println(U_new);
   //  if(U_new >= 0)

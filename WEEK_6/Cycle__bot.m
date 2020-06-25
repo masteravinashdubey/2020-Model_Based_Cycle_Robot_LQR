@@ -32,12 +32,12 @@ A = [0 1 0 0;                           % state matrix
 B = [0;b2;0;b4];            % input matrix
 C = eye(4);                             % output matrix
 D = [0;0;0;0];                          % feed-forward matrix
-Q = [20 0 0 0;
-     0 1 0 0;                          % Q matrix of system
-     0 0 1 0;
-     0 0 0 1];
-R = 0.0001;                                 % R parameter
-%K = lqr(A,B,Q,R)                        % lqr function 
+Q = [100 0 0 0;
+     0 1000 0 0;                          % Q matrix of system
+     0 0 0.00001 0;
+     0 0 0 0.0001];
+R = 0.01;                                   % R parameter
+K = lqr(A,B,Q,R)                        % lqr function 
 
 Ts = 1/200;
 sys_s = ss(A,B,C,D);
