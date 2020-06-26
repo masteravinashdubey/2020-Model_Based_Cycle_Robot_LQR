@@ -3,7 +3,7 @@ float reqthetadot = 0, reqtheta = 0, reqphi = 0, reqphidot = 0;
 float errorthetadot = 0, errortheta = 0, errorphi = 0, errorphidot = 0;
 double theta, phi;
 double thetadot, phidot;
-const float angle_offset = 00.5;
+const float angle_offset = 0.02;
 int dummy = 0;
 float U = 0, U_new = 0, U_previous = 0;
 /******************/
@@ -14,7 +14,7 @@ void lqr(double roll, double angVelocity, double phi, double phidot)
   //Gain matrix optained from octave for sampling time of 7 ms
   double
   
-  k[4] = {9.1684e+03 ,  6.0804e+02 ,  2.0196e-09  , 3.6296e+01};    // { distance, velocity, angle, angular velocity }
+  k[4] = {130.16838 ,   16.89727  ,  -0.76064 ,    2.00212};    // { distance, velocity, angle, angular velocity }
 
   //  Serial.println(mpu.omega);
   //     Serial.println(phi);
@@ -32,7 +32,7 @@ void lqr(double roll, double angVelocity, double phi, double phidot)
   Serial.println(roll);
 
   //Serial.print("\t");
-  errortheta = (roll - reqtheta) ;    //Error in the distance covered
+  errortheta = (roll - reqtheta) - angle_offset ;    //Error in the distance covered
   //  Serial.print(errortheta);
   //  Serial.print("\t");
   errorthetadot = (angVelocity - reqthetadot);           //Error in the velocity
