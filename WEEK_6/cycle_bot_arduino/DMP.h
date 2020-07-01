@@ -125,7 +125,7 @@
       }
       mpu.dmpGetQuaternion(&q, fifoBuffer);
       mpu.dmpGetGravity(&gravity, &q);
-      mpu.dmpGetYawPitchRoll(ypr, &q, &gravity); \
+      mpu.dmpGetYawPitchRoll(ypr, &q, &gravity); 
 //      Serial.print("ypr\t");
 //      Serial.print(ypr[0] * 180 / M_PI);
 //      Serial.print("\t");

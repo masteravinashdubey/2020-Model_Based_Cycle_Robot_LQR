@@ -33,10 +33,10 @@ B = [0;b2;0;b4];            % input matrix
 C = eye(4);                             % output matrix
 D = [0;0;0;0];                          % feed-forward matrix
 Q = [100 0 0 0;
-     0 1000 0 0;                          % Q matrix of system
-     0 0 0.00001 0;
-     0 0 0 0.0001];
-R = 0.01;                                 % R parameter
+     0 50 0 0;                          % Q matrix of system
+     0 0 0.1 0;
+     0 0 0 1];
+R = 1;                                 % R parameter
 %K = lqr(A,B,Q,R)                        % lqr function 
 
 Ts = 1/200;
@@ -71,7 +71,7 @@ for i = 1:100
    y1 = y_new;
    U = -K*(y1-y0);
 endfor
-
+display(K);
 figure;
 subplot(3,2,1);
 plot(t,y(:,1));

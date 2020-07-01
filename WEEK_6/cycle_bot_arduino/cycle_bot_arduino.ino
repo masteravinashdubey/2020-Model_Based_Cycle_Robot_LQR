@@ -16,8 +16,8 @@
 #define servoPin 9
 
 //XBee mod(&Serial1);  	//mention the name of serial being used to communicate with XBee
-motor reaction(31, 30, 3); //change the pin numbers here
-motor drive(32, 33, 4);   //change the pin numbers here
+motor reaction(31, 30, 7); //change the pin numbers here
+motor drive(32, 33, 8);   //change the pin numbers here
 #include"controller_lqr.h"
 Servo handle;
 //CompFil mpu6050;
@@ -66,34 +66,34 @@ void loop()
   //Serial.println(mpu.roll);
   //  Serial.print("Omega:\t");
   //  Serial.println(mpu.omega);
-
-  if ((micros() - prevtime) >= 5000)
-  {
-    //  Serial.println("going in lqr");
-// lqr(ypr[2],angVelocity, phi, phidot);
-
-    prevtime = micros();
-  }
+//
+//  if ((micros() - prevtime) >= 5000)
+//  {
+//    //  Serial.println("going in lqr");
+//// lqr(ypr[2],angVelocity, phi, phidot);
+//
+//    prevtime = micros();
+//  }
 getDMP();
-  if (check)
+  if (check2)
   {
 //    mpu6050.read_accel();
 //    mpu6050.read_gyro();
 //    mpu6050.complimentary_filter_roll();
     // Serial.println(mpu.roll_deg);
-    
+       check = 0;
     angVelocity=(ypr[2]-previousRoll)/0.005;
     previousRoll=ypr[2];
  lqr(ypr[2],angVelocity, phi, phidot);
-    check = 0;
+    
   }
-  if (check2)
+  if (check)
   {
-       
+        check2 = 0; 
     phidot = (encoderCount - prevCount) * 2 * PI / (270 * 0.01); //in rad/sec
     prevCount = encoderCount;
     //Serial.println(phidot);
-    check2 = 0;
+  
   }
 }
 
@@ -116,13 +116,13 @@ void enable_timer()
 
   TCCR2A = (1 << WGM21);   //CTC mode
   TCCR2B = 7;              //1024 prescaler
-  OCR2A = sampleTime(3);             // compare match register, setting for 10ms
+  OCR2A = sampleTime(5);             // compare match register, setting for 10ms
   TIMSK2 = (1 << OCIE2A);  // enable timer compare interrupt
   TCNT2  = 0;
 
   TCCR0A = (1 << WGM01);          //CTC mode
   TCCR0B = (1 << CS02) | (1 << CS00); //1024 prescaler
-  OCR0A = sampleTime(5);                     // compare match register, setting for 3ms
+  OCR0A = sampleTime(3);                     // compare match register, setting for 3ms
   TIMSK0 = (1 << OCIE0A);         // enable timer compare interrupt
   TCNT0  = 0;
 
@@ -131,6 +131,7 @@ void enable_timer()
 ISR(TIMER2_COMPA_vect)
 {
   check2 = 1;
+//Serial.println("ok");
 
   //  PORTJ^=0x01;
 }
