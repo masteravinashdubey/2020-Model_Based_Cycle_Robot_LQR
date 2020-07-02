@@ -1,7 +1,9 @@
-#define F_CPU 16000000
+//#define F_CPU 16000000
 #include "I2Cdev.h"
 //#include "MPU6050.h"
 #include<Arduino.h>
+#include <TimerOne.h>
+#include <TimerThree.h>
 #include "MPU6050_6Axis_MotionApps20.h"
 #include "Wire.h"
 #include"DMP.h"
@@ -9,20 +11,20 @@
 #include"motor.h"
 #include"mpu.h"
 
-#include<Servo.h>
+//#include<Servo.h>
 #define PI 3.14159
 #define encPin1 18     //SET PIN NUMBERS
 #define encPin2 9
 #define servoPin 10
 
-//XBee mod(&Serial1);  	//mention the name of serial being used to communicate with XBee
+//XBee mod(&Serial1);    //mention the name of serial being used to communicate with XBee
 motor reaction(31, 30, 7); //change the pin numbers here
 motor drive(32, 33, 8);   //change the pin numbers here
 #include"controller_lqr.h"
-Servo handle;
+//Servo handle;
 //CompFil mpu6050;
 volatile int encoderCount = 0, prevCount = 0;
-float previousRoll=0,angVelocity=0;
+float previousRoll = 0, angVelocity = 0;
 long prevtime = 0;
 
 char sampleTime(long Time)
@@ -40,11 +42,11 @@ void setup()
 
   Serial.begin(115200);
 
-//  mpu6050.init();
+//   mpu6050.init();
 MPUInit();
   Serial.println("going in loop");
-  handle.attach(servoPin);
-  handle.write(0);
+  //  handle.attach(servoPin);
+  // handle.write(0);
   pinMode(encPin2, INPUT_PULLUP);
   pinMode(encPin1, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(encPin1), encoderHandler, RISING);
@@ -66,34 +68,36 @@ void loop()
   //Serial.println(mpu.roll);
   //  Serial.print("Omega:\t");
   //  Serial.println(mpu.omega);
-//
-//  if ((micros() - prevtime) >= 5000)
-//  {
-//    //  Serial.println("going in lqr");
-//// lqr(ypr[2],angVelocity, phi, phidot);
-//
-//    prevtime = micros();
-//  }
-getDMP();
-  if (check2)
+  //
+  //  if ((micros() - prevtime) >= 5000)
+  //  {
+  //    //  Serial.println("going in lqr");
+  //// lqr(ypr[2],angVelocity, phi, phidot);
+  //
+  //    prevtime = micros();
+  //  }
+  getDMP();
+  if (check)
   {
+
+    check = 0;
 //    mpu6050.read_accel();
 //    mpu6050.read_gyro();
 //    mpu6050.complimentary_filter_roll();
     // Serial.println(mpu.roll_deg);
-       check = 0;
-    angVelocity=(ypr[2]-previousRoll)/0.005;
-    previousRoll=ypr[2];
- lqr(ypr[2],angVelocity, phi, phidot);
-    
+        angVelocity = (ypr[2] - previousRoll) / 0.005;
+        previousRoll = ypr[2];
+        lqr(ypr[2], angVelocity, phi, phidot);
+//    lqr(mpu6050.roll, angVelocity, phi, phidot);
+
   }
-  if (check)
+  if (check2)
   {
-        check2 = 0; 
+    check2 = 0;
     phidot = (encoderCount - prevCount) * 2 * PI / (270 * 0.01); //in rad/sec
     prevCount = encoderCount;
     //Serial.println(phidot);
-  
+
   }
 }
 
@@ -105,39 +109,23 @@ void encoderHandler()
     encoderCount--;
 
   phi = encoderCount * 2 * PI / 270;
-//  Serial.println(encoderCount);
-//  if(phi>360)
-//  encoderCount=0;
+  //  Serial.println(encoderCount);
+  //  if(phi>360)
+  //  encoderCount=0;
 }
 
 void enable_timer()
 {
-  noInterrupts();          // disable all interrupts
-
-  TCCR2A = (1 << WGM21);   //CTC mode
-  TCCR2B = 7;              //1024 prescaler
-  OCR2A = sampleTime(5);             // compare match register, setting for 10ms
-  TIMSK2 = (1 << OCIE2A);  // enable timer compare interrupt
-  TCNT2  = 0;
-
-  TCCR0A = (1 << WGM01);          //CTC mode
-  TCCR0B = (1 << CS02) | (1 << CS00); //1024 prescaler
-  OCR0A = sampleTime(3);                     // compare match register, setting for 3ms
-  TIMSK0 = (1 << OCIE0A);         // enable timer compare interrupt
-  TCNT0  = 0;
-
-  interrupts();             // enable all interrupts
+  Timer1.initialize(5000); // set a timer of length 100000 microseconds (or 0.1 sec - or 10Hz => the led will blink 5 times, 5 cycles of on-and-off, per second)
+  Timer1.attachInterrupt( timer1Isr ); // attach the service routine here
+  Timer3.initialize(3000);
+  Timer3.attachInterrupt( timer3Isr );
 }
-ISR(TIMER2_COMPA_vect)
-{
-  check2 = 1;
-//Serial.println("ok");
-
-  //  PORTJ^=0x01;
-}
-
-ISR(TIMER0_COMPA_vect)
+void timer1Isr()
 {
   check = 1;
-  //  PORTJ^=0x02;
+}
+void timer3Isr()
+{
+  check2 = 1;
 }
