@@ -32,10 +32,10 @@ A = [0 1 0 0;                           % state matrix
 B = [0;-1/a;0;(a+I2)/(a*I2)];            % input matrix
 C = eye(4);                             % output matrix
 D = [0;0;0;0];                          % feed-forward matrix
-Q = [100 0 0 0;
-     0 80 0 0;                          % Q matrix of system
-     0 0 1 0;
-     0 0 0 1];
+  Q = [40 0 0 0;
+     0 100 0 0;                          % Q matrix of system
+     0 0 5 0;
+     0 0 0 15];
 R = 1;                                   % R parameter
 %K = lqr(A,B,Q,R)                        % lqr function 
 

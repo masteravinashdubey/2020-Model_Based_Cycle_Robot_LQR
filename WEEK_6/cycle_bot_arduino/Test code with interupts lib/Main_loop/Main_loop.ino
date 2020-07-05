@@ -18,7 +18,7 @@
 #define servoPin 10
 
 //XBee mod(&Serial1);    //mention the name of serial being used to communicate with XBee
-motor reaction(31, 30, 7); //change the pin numbers here
+motor reaction(30, 31, 7); //change the pin numbers here
 motor drive(32, 33, 8);   //change the pin numbers here
 #include"controller_lqr.h"
 //Servo handle;
@@ -26,6 +26,8 @@ motor drive(32, 33, 8);   //change the pin numbers here
 volatile int encoderCount = 0, prevCount = 0;
 float previousRoll = 0, angVelocity = 0;
 long prevtime = 0;
+volatile double  phi=0,previousPhi=0;
+volatile double  phidot=0;
 
 char sampleTime(long Time)
 {
@@ -42,8 +44,8 @@ void setup()
 
   Serial.begin(115200);
 
-//   mpu6050.init();
-MPUInit();
+  //   mpu6050.init();
+  MPUInit();
   Serial.println("going in loop");
   //  handle.attach(servoPin);
   // handle.write(0);
@@ -69,34 +71,67 @@ void loop()
   //  Serial.print("Omega:\t");
   //  Serial.println(mpu.omega);
   //
-  //  if ((micros() - prevtime) >= 5000)
-  //  {
-  //    //  Serial.println("going in lqr");
-  //// lqr(ypr[2],angVelocity, phi, phidot);
-  //
-  //    prevtime = micros();
-  //  }
+    if ((millis() - prevtime) >= 5)
+    {
+             phi = encoderCount * 1.33;
+//  Serial.print(encoderCount);
+//  Serial.print("\t");
+  
+    phidot = (phi-previousPhi)/(millis() - prevtime)/1000; //in rad/sec
+    
+   
+ 
+       if(phi>=360)encoderCount=0;
+
+   previousPhi=phi;
+  
+      prevtime = millis();
+      Serial.print(phi);
+         Serial.print("\t");
+    Serial.println(phidot);
+    }
   getDMP();
   if (check)
   {
 
     check = 0;
-//    mpu6050.read_accel();
-//    mpu6050.read_gyro();
-//    mpu6050.complimentary_filter_roll();
+    //    mpu6050.read_accel();
+    //    mpu6050.read_gyro();
+    //    mpu6050.complimentary_filter_roll();
     // Serial.println(mpu.roll_deg);
-        angVelocity = (ypr[2] - previousRoll) / 0.005;
-        previousRoll = ypr[2];
-        lqr(ypr[2], angVelocity, phi, phidot);
-//    lqr(mpu6050.roll, angVelocity, phi, phidot);
+    angVelocity = (ypr[2] - previousRoll) / 0.005;
+    previousRoll = ypr[2];
+//       phi = encoderCount * 1.33;
+////  Serial.print(encoderCount);
+////  Serial.print("\t");
+////  Serial.print(phi);
+//    phidot = (phi-previousPhi)/0.005; //in rad/sec
+//    
+////   
+////    Serial.print("\t");
+////    Serial.println(phidot);
+//       if(phi>=360)encoderCount=0;
+//
+//   previousPhi=phi;
+    lqr(ypr[2], angVelocity, phi,  phidot);
+    //    lqr(mpu6050.roll, angVelocity, phi, phidot);
 
   }
   if (check2)
   {
     check2 = 0;
-    phidot = (encoderCount - prevCount) * 2 * PI / (270 * 0.01); //in rad/sec
-    prevCount = encoderCount;
-    //Serial.println(phidot);
+//   phi = encoderCount * 1.33;
+////  Serial.print(encoderCount);
+////  Serial.print("\t");
+////  Serial.print(phi);
+//    phidot = (phi-previousPhi)/0.003; //in rad/sec
+//    
+////   
+////    Serial.print("\t");
+////    Serial.println(phidot);
+//       if(phi>=360)encoderCount=0;
+//
+//   previousPhi=phi;
 
   }
 }
@@ -108,8 +143,11 @@ void encoderHandler()
   else
     encoderCount--;
 
-  phi = encoderCount * 2 * PI / 270;
-  //  Serial.println(encoderCount);
+
+//  phi = encoderCount * (360 / 270);
+//  Serial.print(encoderCount);
+//  Serial.print("\t");
+//  Serial.println(phi);
   //  if(phi>360)
   //  encoderCount=0;
 }
