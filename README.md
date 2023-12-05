@@ -12,3 +12,4 @@
 - Meeting reports folder contains the minutes of the meetings with the mentors.
 - Project progress report folder tracks the progress of the project so far.
 - Weekly reports folder contains the weekly reports.
+- The video link is : <a href="https://www.youtube.com/watch?v=THvqfcC5Y-I&list=PLK0jpMYIBd6B1-mDQZwADi5OlnOiK6k9m&index=19"> LQR based Cycle Robot </a>
